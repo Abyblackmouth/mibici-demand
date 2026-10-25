@@ -13,4 +13,8 @@ ruff
 scikit-learn
 tqdm
 typer
+pyarrow
+seaborn
+requests
+mlflow>=3.0
 -e .

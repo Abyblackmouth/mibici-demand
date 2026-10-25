@@ -64,8 +64,35 @@ create_environment:
 ## Make dataset
 .PHONY: data
 data: requirements
-	$(PYTHON_INTERPRETER) mibici_demand/dataset.py
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli descargar
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli procesar
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli construir
 
+
+## Descargar los archivos mensuales de MiBici a data/raw
+.PHONY: descargar
+descargar:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli descargar
+
+## Limpiar los viajes mes por mes
+.PHONY: procesar
+procesar:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli procesar
+
+## Construir la tabla de entrenamiento por estacion y hora
+.PHONY: construir
+construir:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli construir
+
+## Generar las figuras del EDA
+.PHONY: figuras
+figuras:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli figuras
+
+## Registrar las versiones de los datos en MLflow
+.PHONY: registrar
+registrar:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli registrar --version v1
 
 #################################################################################
 # Self Documenting Commands                                                     #

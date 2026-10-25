@@ -1,5 +1,12 @@
 # Data
-/data/
+# Data: los CSV y las tablas se reproducen con el pipeline y se registran en MLflow;
+# solo se versiona el manifiesto de los archivos descargados
+data/raw/*
+data/interim/*
+data/processed/*
+data/external/*
+!data/*/.gitkeep
+!data/raw/manifest.csv
 
 # Mac OS-specific storage files
 .DS_Store
@@ -189,3 +196,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# MLflow local
+mlruns/
+mlartifacts/
+mlflow.db
+*.db
