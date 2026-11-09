@@ -58,3 +58,17 @@ ROLLING_HOURS = 24
 
 TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI", f"sqlite:///{ROOT / 'mlflow.db'}")
 EXPERIMENT_NAME = "mibici-fase1-versiones-de-datos"
+
+# Parámetros de modelado y experimentación (Fase 2)
+MODEL_EXPERIMENT_NAME = "mibici-fase2-modelado"
+REGISTERED_MODEL_NAME = "mibici-demanda-estacion-hora"
+RANDOM_SEED = 42
+TEST_DAYS = 7
+VAL_DAYS = 7
+PEAK_HOURS = (7, 8, 9, 17, 18, 19)
+DEFAULT_HORIZON = "24h"
+HORIZON_LAGS = {
+    "24h": ["lag_24", "lag_168"],
+    "1h": ["lag_1", "lag_24", "lag_168", "media_24h"],
+}
+STATION_META_COLS = ["latitud", "longitud", "capacidad"]

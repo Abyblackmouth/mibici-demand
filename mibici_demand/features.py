@@ -6,11 +6,14 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from sklearn.base import BaseEstimator, TransformerMixin
 
 from mibici_demand import config
 
 HOUR = pd.Timedelta(hours=1)
 LAG_COLUMNS = [f"lag_{k}" for k in config.LAGS] + ["media_24h"]
+CALENDAR_COLUMNS = ["hora", "dia_semana", "mes", "es_fin_semana"]
+PROFILE_COLUMNS = ["est_demanda_media", "est_prop_hora_pico", "pc1", "pc2", "pc3"]
 FEATURES = ["estacion", "hora", "dia_semana", "mes", "es_fin_semana"] + LAG_COLUMNS
 TARGET = "demanda"
 
@@ -234,6 +237,134 @@ def station_profile_pca(
         columns=[f"pc{i + 1}" for i in range(n_components)],
     )
     return components.reset_index(), pca.explained_variance_ratio_
+
+
+def get_feature_columns(df: pd.DataFrame, horizon: str = config.DEFAULT_HORIZON) -> list[str]:
+    """Selecciona dinámicamente las variables predictoras válidas según el horizonte de pronóstico.
+
+    Evita la fuga de información (data leakage) excluyendo `lag_1` y `media_24h` cuando
+    el horizonte es operativo a 24 horas (`horizon == "24h"`), e incorpora las columnas
+    disponibles del catálogo de estaciones (`latitud`, `longitud`, `capacidad`).
+    """
+    if horizon not in config.HORIZON_LAGS:
+        raise ValueError(
+            f"Horizonte '{horizon}' no soportado. Opciones válidas: {list(config.HORIZON_LAGS)}"
+        )
+
+    valid_lags = [col for col in config.HORIZON_LAGS[horizon] if col in df.columns]
+    calendar_cols = [col for col in CALENDAR_COLUMNS if col in df.columns]
+    station_cols = ["estacion"] if "estacion" in df.columns else []
+    meta_cols = [col for col in config.STATION_META_COLS if col in df.columns]
+
+    return station_cols + calendar_cols + valid_lags + meta_cols
+
+
+class StationProfileTransformer(BaseEstimator, TransformerMixin):
+    """Transformador compatible con Scikit-Learn que enriquece cada estación con su perfil histórico.
+
+    Durante `fit(X, y)` calcula exclusivamente sobre el subconjunto de entrenamiento:
+    1. `est_demanda_media`: demanda media histórica por hora de la estación.
+    2. `est_prop_hora_pico`: proporción de viajes iniciados en horas pico (`config.PEAK_HOURS`).
+    3. `pc1`, `pc2`, `pc3`: componentes principales del perfil semanal de 168 horas mediante
+       `station_profile_pca`.
+
+    Durante `transform(X)` une las estadísticas por `estacion` y rellena estaciones nuevas o sin
+    historial suficiente (riesgo H14 documentado en `references/hallazgos_de_datos.md`) con la
+    mediana global aprendida en el entrenamiento, previniendo cualquier fuga de datos del futuro.
+    """
+
+    def __init__(
+        self,
+        n_components: int = 3,
+        peak_hours: tuple[int, ...] = config.PEAK_HOURS,
+    ) -> None:
+        self.n_components = n_components
+        self.peak_hours = peak_hours
+
+    def fit(
+        self, X: pd.DataFrame, y: pd.Series | np.ndarray | None = None
+    ) -> StationProfileTransformer:
+        """Ajusta las estadísticas por estación y el PCA semanal usando solo datos de entrenamiento."""
+        if not isinstance(X, pd.DataFrame):
+            raise TypeError(
+                "StationProfileTransformer requiere un pandas.DataFrame como entrada X."
+            )
+
+        if y is not None:
+            target_values = pd.Series(np.asarray(y, dtype=np.float64), index=X.index, name=TARGET)
+        elif TARGET in X.columns:
+            target_values = X[TARGET].astype(np.float64)
+        else:
+            raise ValueError(
+                f"Se requiere la variable objetivo '{TARGET}' en `y` o como columna de `X` durante fit()."
+            )
+
+        work = pd.DataFrame(
+            {
+                "estacion": X["estacion"].to_numpy(),
+                "dia_semana": X["dia_semana"].to_numpy(),
+                "hora": X["hora"].to_numpy(),
+                TARGET: target_values.to_numpy(),
+            },
+            index=X.index,
+        )
+        work["en_pico"] = work["hora"].isin(self.peak_hours)
+
+        # 1. Demanda media histórica y proporción de demanda en horas pico por estación
+        grouped = work.groupby("estacion", observed=True)
+        mean_demand = grouped[TARGET].mean().rename("est_demanda_media")
+        total_demand = grouped[TARGET].sum()
+        peak_demand = (
+            work[work["en_pico"]]
+            .groupby("estacion", observed=True)[TARGET]
+            .sum()
+            .reindex(mean_demand.index, fill_value=0.0)
+        )
+        prop_peak = pd.Series(
+            np.where(total_demand > 0, peak_demand / total_demand, 0.0),
+            index=mean_demand.index,
+            name="est_prop_hora_pico",
+        )
+
+        # 2. Componentes principales del perfil semanal (usando la lógica de station_profile_pca)
+        n_stations = len(mean_demand)
+        n_slots = work[["dia_semana", "hora"]].drop_duplicates().shape[0]
+        eff_components = min(self.n_components, n_stations, n_slots)
+        pc_cols = [f"pc{i + 1}" for i in range(self.n_components)]
+
+        if n_stations >= 2 and eff_components >= 1:
+            pca_df, self.explained_variance_ratio_ = station_profile_pca(
+                work, n_components=eff_components
+            )
+            pca_df = pca_df.set_index("estacion")
+            for i in range(eff_components, self.n_components):
+                pca_df[f"pc{i + 1}"] = 0.0
+            pca_df = pca_df[pc_cols]
+        else:
+            self.explained_variance_ratio_ = np.zeros(self.n_components, dtype=np.float64)
+            pca_df = pd.DataFrame(0.0, index=mean_demand.index, columns=pc_cols)
+
+        profile_df = pd.concat([mean_demand, prop_peak, pca_df], axis=1).reset_index()
+        self.feature_names_out_ = ["est_demanda_media", "est_prop_hora_pico", *pc_cols]
+        self.station_profiles_ = profile_df
+        self.global_medians_ = (
+            profile_df[self.feature_names_out_].median(numeric_only=True).fillna(0.0).to_dict()
+        )
+        return self
+
+    def transform(self, X: pd.DataFrame) -> pd.DataFrame:
+        """Une el perfil histórico por estación e imputa estaciones nuevas (H14) con la mediana global."""
+        if not isinstance(X, pd.DataFrame):
+            raise TypeError(
+                "StationProfileTransformer requiere un pandas.DataFrame como entrada X."
+            )
+
+        out = X.drop(columns=[c for c in self.feature_names_out_ if c in X.columns]).copy()
+        merged = out.merge(self.station_profiles_, on="estacion", how="left")
+        merged.index = X.index
+        for col, median_val in self.global_medians_.items():
+            merged[col] = merged[col].fillna(median_val).astype("float32")
+        return merged
 
 
 # ---------------------------------------------------------------------------------------------------------------

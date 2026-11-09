@@ -245,6 +245,9 @@ def read_catalog(path: Path | None = None) -> pd.DataFrame | None:
         if not candidates:
             return None
         path = candidates[-1]
-    catalog = pd.read_csv(path)
+    try:
+        catalog = pd.read_csv(path)
+    except UnicodeDecodeError:
+        catalog = pd.read_csv(path, encoding="latin-1")
     catalog["activa_en_catalogo"] = ~catalog["name"].astype(str).str.lower().str.startswith("ex-")
     return catalog
