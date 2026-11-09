@@ -26,4 +26,14 @@ Para dejar el proyecto funcionando desde una instalación limpia (Python 3.10 o 
 
         python -m mlflow ui --backend-store-uri sqlite:///mlflow.db
 
+6. Ajustar, comparar y registrar los modelos (guarda `models/best_pipeline.joblib`, `reports/resultados_modelos.csv` y las figuras de comparación):
+
+        python -m mibici_demand.cli entrenar --registrar-mlflow
+
+7. Generar predicciones por lotes con el mejor modelo (`data/processed/predicciones_demanda.parquet`):
+
+        python -m mibici_demand.cli predecir
+
+`entrenar` acepta `--horizonte` (24h o 1h), `--max-train-months`, `--modelos`, `--n-iter` y `--etiqueta`.
+
 Para comparar una ventana de años distinta se usa `--desde 2022-01 --etiqueta desde2022` en `construir` y en `registrar`.

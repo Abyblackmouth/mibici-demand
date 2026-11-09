@@ -205,3 +205,112 @@ def test_las_figuras_se_generan(tmp_path):
     rutas = [plots.trips_per_month(resumen, tmp_path), plots.cleaning_by_rule(resumen, tmp_path), plots.demand_heatmap(tabla, tmp_path),
              plots.demand_distribution(tabla, tmp_path), plots.pca_stations(components, explained, tmp_path, tabla)]
     assert all(ruta.exists() and ruta.stat().st_size > 0 for ruta in rutas)
+
+
+def test_pipeline_sklearn_preprocesa_y_evita_fuga_en_24h(tmp_path):
+    from mibici_demand.modeling.pipeline import build_model_pipeline
+
+    _synthetic_month(tmp_path)
+    table, _ = features.build_station_hour_table(tmp_path)
+    train_df, test_df = features.split_temporal(table, test_days=3)
+
+    cols_24h = features.get_feature_columns(train_df, horizon="24h")
+    assert "lag_1" not in cols_24h and "media_24h" not in cols_24h
+    assert "lag_24" in cols_24h and "lag_168" in cols_24h
+
+    pipe = build_model_pipeline("hist_gbm_poisson", horizon="24h", include_station_meta=True)
+    num_cols = list(pipe.named_steps["preprocesador"].transformers[0][2])
+    assert "lag_1" not in num_cols and "media_24h" not in num_cols
+
+    pipe.fit(train_df[cols_24h], train_df["demanda"])
+    # Simula estación nueva sin historial en entrenamiento (riesgo H14)
+    test_h14 = test_df[cols_24h].copy()
+    test_h14.iloc[:5, test_h14.columns.get_loc("estacion")] = 999
+    preds = np.clip(pipe.predict(test_h14), 0.0, None)
+    assert len(preds) == len(test_h14)
+    assert not np.isnan(preds).any() and (preds >= 0.0).all()
+
+
+def test_entrenamiento_ajuste_y_metricas_hora_pico(tmp_path):
+    from mibici_demand.modeling import train
+
+    _synthetic_month(tmp_path)
+    table, _ = features.build_station_hour_table(tmp_path)
+    tr, va, te = train.temporal_train_val_test_split(table, val_days=2, test_days=2)
+    assert tr["hora_inicio"].max() < va["hora_inicio"].min() < te["hora_inicio"].min()
+
+    out = train.tune_and_evaluate(
+        table=table,
+        models=("ridge", "poisson"),
+        val_days=2,
+        test_days=2,
+        n_iter=2,
+        cv_splits=2,
+        models_dir=tmp_path / "models",
+        reports_dir=tmp_path / "reports",
+        log_to_mlflow=False,
+    )
+    results_df = out["results_df"]
+    assert out["best_pipeline_path"].exists()
+    assert out["results_csv_path"].exists() and out["results_json_path"].exists()
+    for metric_col in ("test_mae", "test_rmse", "test_wape", "test_wape_horas_pico"):
+        assert metric_col in results_df.columns
+        assert results_df[metric_col].notna().all()
+
+
+def test_mlflow_tracking_y_model_registry_fase2(tmp_path, monkeypatch):
+    from mlflow.tracking import MlflowClient
+
+    from mibici_demand import config, tracking
+    from mibici_demand.modeling.pipeline import build_model_pipeline
+
+    _synthetic_month(tmp_path)
+    table, _ = features.build_station_hour_table(tmp_path)
+    train_df, test_df = features.split_temporal(table, test_days=2)
+    cols = features.get_feature_columns(train_df, horizon="24h")
+
+    db_uri = f"sqlite:///{(tmp_path / 'mlflow_test.db').as_posix()}"
+    monkeypatch.setattr(config, "TRACKING_URI", db_uri)
+
+    pipe = build_model_pipeline("ridge", params={"alpha": 1.0}, horizon="24h")
+    pipe.fit(train_df[cols], train_df["demanda"])
+
+    metrics = {
+        "mae": 1.15,
+        "rmse": 1.48,
+        "wape": 0.34,
+        "r2": 0.42,
+        "mae_horas_pico": 1.32,
+        "wape_horas_pico": 0.31,
+    }
+    run_id = tracking.log_model_run(
+        model_name="ridge",
+        metrics=metrics,
+        params={"alpha": 1.0},
+        horizon="24h",
+        etiqueta_ventana="desde2022",
+        filas_entrenamiento=len(train_df),
+        filas_prueba=len(test_df),
+        baseline_wape=0.40,
+        pipeline=pipe,
+        X_sample=test_df[cols].head(10),
+        cv_trials=[{"params": {"alpha": 1.0}, "metrics": {"cv_mae": 1.18}}],
+    )
+    assert run_id
+
+    reg = tracking.register_champion_model(
+        run_id=run_id,
+        model_name="ridge",
+        metrics=metrics,
+        best_params={"alpha": 1.0},
+        etiqueta_ventana="desde2022",
+        horizon="24h",
+    )
+    client = MlflowClient(tracking_uri=db_uri)
+    mv = client.get_model_version(config.REGISTERED_MODEL_NAME, reg["version"])
+    assert str(mv.version) == reg["version"]
+    assert "champion" in mv.aliases
+    assert mv.tags["algoritmo"] == "ridge"
+    assert mv.tags["wape_horas_pico"] == "0.3100"
+    assert mv.tags["ventana"] == "desde2022"
+

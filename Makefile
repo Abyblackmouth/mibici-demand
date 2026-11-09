@@ -94,6 +94,16 @@ figuras:
 registrar:
 	$(PYTHON_INTERPRETER) -m mibici_demand.cli registrar --version v1
 
+## Entrenar, ajustar y registrar modelos de Fase 2 en MLflow
+.PHONY: train
+train:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli entrenar --registrar-mlflow
+
+## Ejecutar inferencia por lotes y presion de redistribucion (Fase 2)
+.PHONY: predict
+predict:
+	$(PYTHON_INTERPRETER) -m mibici_demand.cli predecir
+
 #################################################################################
 # Self Documenting Commands                                                     #
 #################################################################################
