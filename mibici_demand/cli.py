@@ -6,6 +6,8 @@ python -m mibici_demand.cli construir [--perfil limpio|bruto] [--desde ... --has
 python -m mibici_demand.cli registrar [--perfil limpio|bruto] [--version v1] [--etiqueta desde2022]
 python -m mibici_demand.cli figuras   [--perfil limpio]
 python -m mibici_demand.cli todo      [--perfil limpio] [--desde ... --hasta ...]
+python -m mibici_demand.cli entrenar  [--perfil limpio] [--etiqueta desde2022] [--horizonte 24h] [--max-train-months 12] [--modelos ...] [--n-iter 5] [--registrar-mlflow]
+python -m mibici_demand.cli predecir  [--perfil limpio] [--etiqueta desde2022] [--horizonte 24h] [--model-path models/best_pipeline.joblib]
 """
 
 from __future__ import annotations
@@ -239,6 +241,80 @@ def cmd_todo(args) -> None:
     cmd_figuras(args)
 
 
+def cmd_entrenar(args) -> None:
+    """Ejecuta el entrenamiento, ajuste de hiperparámetros, figuras Fase 2 y registro en MLflow."""
+    from mibici_demand.modeling import train
+
+    table_path = _processed_path(args.perfil, args.etiqueta)
+    if not table_path.exists():
+        interim_dir = _interim(args.perfil)
+        if any(interim_dir.glob("demanda_*.parquet")):
+            print(f"Construyendo {table_path.name} desde {interim_dir}...")
+            cmd_construir(args)
+        else:
+            raise SystemExit(
+                f"No existe la tabla procesada en {table_path} ni archivos intermedios en {interim_dir}. "
+                f"Corre primero: python -m mibici_demand.cli procesar --perfil {args.perfil} && "
+                f"python -m mibici_demand.cli construir --perfil {args.perfil}"
+                + (f" --etiqueta {args.etiqueta}" if args.etiqueta else "")
+            )
+
+    summary_file = _summary_path(args.perfil, args.etiqueta)
+    parquet_filters = None
+    if args.max_train_months and args.max_train_months > 0 and summary_file.exists():
+        info = json.loads(summary_file.read_text(encoding="utf-8"))
+        if info.get("hora_max"):
+            min_ts = (
+                pd.Timestamp(info["hora_max"]).floor("D")
+                - pd.Timedelta(days=config.VAL_DAYS + config.TEST_DAYS + 7)
+                - pd.DateOffset(months=args.max_train_months)
+            )
+            parquet_filters = [("hora_inicio", ">=", min_ts)]
+
+    table = pd.read_parquet(table_path, filters=parquet_filters)
+    out = train.tune_and_evaluate(
+        table=table,
+        models=tuple(args.modelos),
+        horizon=args.horizonte,
+        max_train_months=args.max_train_months,
+        n_iter=args.n_iter,
+        models_dir=config.MODELS_DIR,
+        reports_dir=config.REPORTS_DIR,
+        log_to_mlflow=bool(args.registrar_mlflow),
+        etiqueta_ventana=args.etiqueta or "completa",
+        sha256_tabla=dataset.sha256_file(table_path),
+    )
+    print(
+        f"Mejor modelo: {out['best_model_name']} | Pipeline: {out['best_pipeline_path']} | "
+        f"Resultados: {out['results_csv_path']}"
+    )
+
+
+def cmd_predecir(args) -> None:
+    """Ejecuta la inferencia por lotes de demanda y presión de redistribución."""
+    from mibici_demand.modeling import predict
+
+    table_path = _processed_path(args.perfil, args.etiqueta)
+    if not table_path.exists():
+        raise SystemExit(
+            f"No existe la tabla procesada en {table_path}. "
+            f"Corre primero: python -m mibici_demand.cli construir --perfil {args.perfil}"
+            + (f" --etiqueta {args.etiqueta}" if args.etiqueta else "")
+        )
+
+    out_path = config.PROCESSED_DIR / f"predicciones_demanda{_suffix(args.etiqueta)}.parquet"
+    result = predict.run_batch_inference(
+        features_path=table_path,
+        model_source=args.model_path,
+        predictions_path=out_path,
+        horizon=args.horizonte,
+    )
+    default_out = config.PROCESSED_DIR / "predicciones_demanda.parquet"
+    if out_path != default_out:
+        result.to_parquet(default_out, index=False)
+    print(f"Predicciones guardadas en {out_path}")
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(
         prog="mibici_demand",
@@ -253,6 +329,8 @@ def main(argv: list[str] | None = None) -> None:
         ("registrar", cmd_registrar),
         ("figuras", cmd_figuras),
         ("todo", cmd_todo),
+        ("entrenar", cmd_entrenar),
+        ("predecir", cmd_predecir),
     ):
         p = sub.add_parser(name)
         p.add_argument("--desde", help="primer mes, formato AAAA-MM")
@@ -264,6 +342,48 @@ def main(argv: list[str] | None = None) -> None:
             default="",
             help="nombre de la ventana (por ejemplo desde2022) para guardar otra versión de la tabla",
         )
+        if name == "entrenar":
+            p.add_argument(
+                "--horizonte",
+                default=config.DEFAULT_HORIZON,
+                choices=list(config.HORIZON_LAGS),
+                help="horizonte operativo de pronóstico (24h o 1h)",
+            )
+            p.add_argument(
+                "--max-train-months",
+                type=int,
+                default=12,
+                help="meses máximos de historia para entrenamiento (límite de memoria)",
+            )
+            p.add_argument(
+                "--modelos",
+                nargs="+",
+                default=["ridge", "poisson", "hist_gbm_poisson", "random_forest"],
+                help="algoritmos a ajustar y evaluar",
+            )
+            p.add_argument(
+                "--n-iter",
+                type=int,
+                default=5,
+                help="número de combinaciones en RandomizedSearchCV",
+            )
+            p.add_argument(
+                "--registrar-mlflow",
+                action="store_true",
+                help="registrar corridas en MLflow Tracking y promover campeón al Model Registry",
+            )
+        elif name == "predecir":
+            p.add_argument(
+                "--horizonte",
+                default=config.DEFAULT_HORIZON,
+                choices=list(config.HORIZON_LAGS),
+                help="horizonte operativo de pronóstico (24h o 1h)",
+            )
+            p.add_argument(
+                "--model-path",
+                default=str(config.MODELS_DIR / "best_pipeline.joblib"),
+                help="ruta local a best_pipeline.joblib o URI models:/... de MLflow",
+            )
         p.set_defaults(func=func)
     args = parser.parse_args(argv)
     args.func(args)

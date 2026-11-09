@@ -195,3 +195,170 @@ def pca_stations(
     right.set_ylabel("Varianza explicada (%)")
     right.set_title(f"Con 3 componentes: {shown.sum():.1f}%")
     return _save(fig, "pca_estaciones.png", out_dir)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Fase 2: visualización comparativa de modelos y perfil de predicciones vs. demanda real
+# ---------------------------------------------------------------------------------------------------------------
+def _pick_metric_col(df: pd.DataFrame, candidates: tuple[str, ...]) -> str:
+    for col in candidates:
+        if col in df.columns:
+            return col
+    raise KeyError(f"Ninguna de las columnas esperadas {candidates} existe en {list(df.columns)}")
+
+
+def model_comparison_plot(results_df: pd.DataFrame, out_dir: Path = config.FIGURES_DIR) -> Path:
+    """Compara MAE, RMSE, WAPE global y WAPE en horas pico entre baselines y modelos ajustados.
+
+    Genera `reports/figures/comparacion_modelos_fase2.png` diferenciando por color las
+    referencias de la Fase 1 (`estacional_168h`, `ayer_24h`) frente a los algoritmos de ML
+    (`ridge`, `poisson`, `hist_gbm_poisson`, `random_forest`).
+    """
+    model_col = _pick_metric_col(results_df, ("modelo", "model_name", "model"))
+    mae_col = _pick_metric_col(results_df, ("test_mae", "mae", "val_mae"))
+    rmse_col = _pick_metric_col(results_df, ("test_rmse", "rmse", "val_rmse"))
+    wape_col = _pick_metric_col(results_df, ("test_wape", "wape", "val_wape"))
+    wape_peak_col = _pick_metric_col(
+        results_df, ("test_wape_horas_pico", "wape_horas_pico", "val_wape_horas_pico", wape_col)
+    )
+
+    data = results_df.sort_values(mae_col, ascending=True).reset_index(drop=True)
+    names = data[model_col].astype(str).tolist()
+    is_baseline = [
+        ("baseline" in name.lower()) or ("168h" in name.lower()) or ("24h" in name.lower())
+        for name in names
+    ]
+    colors = ["#7F7F7F" if b else "#2C7FB8" for b in is_baseline]
+    if colors:
+        # Destaca en verde el modelo con menor MAE
+        colors[0] = "#33A02C" if not is_baseline[0] else colors[0]
+
+    fig, axes = plt.subplots(2, 2, figsize=(12.5, 7.5), sharey=True)
+    panels = [
+        (axes[0, 0], mae_col, "MAE global (viajes / estación-hora)", False),
+        (axes[0, 1], rmse_col, "RMSE global (viajes / estación-hora)", False),
+        (axes[1, 0], wape_col, "WAPE global (%)", True),
+        (axes[1, 1], wape_peak_col, "WAPE en horas pico 7-9h y 17-19h (%)", True),
+    ]
+
+    y_pos = np.arange(len(names))
+    for ax, col, title, as_pct in panels:
+        values = data[col].to_numpy(dtype=np.float64) * (100.0 if as_pct else 1.0)
+        ax.barh(y_pos, values, color=colors, edgecolor="none", height=0.65)
+        max_val = float(np.nanmax(values)) if len(values) > 0 else 1.0
+        ax.set_xlim(0, max(max_val * 1.22, 0.1))
+        for idx, val in enumerate(values):
+            label = f"{val:.1f}%" if as_pct else f"{val:.3f}"
+            ax.text(
+                val + max_val * 0.02,
+                idx,
+                label,
+                va="center",
+                fontsize=8.5,
+            )
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(names, fontsize=9)
+        ax.invert_yaxis()
+        ax.set_title(title, fontsize=10.5)
+
+    fig.suptitle(
+        "Fase 2: Comparación de modelos de Machine Learning frente a baselines estacionales",
+        fontsize=12,
+        y=1.01,
+    )
+    return _save(fig, "comparacion_modelos_fase2.png", out_dir)
+
+
+def predictions_profile_plot(
+    test_df: pd.DataFrame,
+    y_pred: np.ndarray | pd.Series,
+    out_dir: Path = config.FIGURES_DIR,
+) -> Path:
+    """Grafica la demanda agregada real vs. predicha y el MAE por hora del día en el periodo de prueba.
+
+    Genera `reports/figures/prediccion_vs_real_fase2.png` con dos paneles:
+    - Panel superior: serie temporal de viajes totales por hora en la red (real vs. predicho)
+      durante los 7 días de prueba.
+    - Panel inferior: error absoluto medio (MAE) por hora del día (`0..23`) comparando el mejor
+      modelo contra el baseline estacional de 168 horas (`lag_168`), sombreando `config.PEAK_HOURS`.
+    """
+    work = test_df.copy()
+    work["y_true"] = work["demanda"].to_numpy(dtype=np.float64)
+    work["y_pred"] = np.clip(np.asarray(y_pred, dtype=np.float64), 0.0, None)
+    work["err_modelo"] = np.abs(work["y_true"] - work["y_pred"])
+
+    fig, (top, bottom) = plt.subplots(2, 1, figsize=(11.5, 7.0))
+
+    if "hora_inicio" in work.columns:
+        hourly_series = (
+            work.groupby("hora_inicio", observed=True)[["y_true", "y_pred"]].sum().sort_index()
+        )
+        x_time = hourly_series.index
+    else:
+        hourly_series = work[["y_true", "y_pred"]].reset_index(drop=True)
+        x_time = hourly_series.index
+
+    top.plot(
+        x_time,
+        hourly_series["y_true"],
+        label="Demanda real observada",
+        color="#1F78B4",
+        linewidth=1.5,
+    )
+    top.plot(
+        x_time,
+        hourly_series["y_pred"],
+        label="Demanda predicha (mejor modelo)",
+        color="#E31A1C",
+        linestyle="--",
+        linewidth=1.4,
+    )
+    top.set_ylabel("Viajes totales por hora en la red")
+    top.yaxis.set_major_formatter(THOUSANDS)
+    top.set_title("Serie temporal de demanda horaria total: real vs. predicha (ventana de prueba)")
+    top.legend(loc="upper right", fontsize=9)
+
+    by_hour_model = work.groupby("hora", observed=True)["err_modelo"].mean()
+    hours = by_hour_model.index.to_numpy(dtype=int)
+    bottom.plot(
+        hours,
+        by_hour_model.to_numpy(),
+        marker="o",
+        color="#E31A1C",
+        linewidth=1.8,
+        label="Mejor modelo ML",
+    )
+
+    if "lag_168" in work.columns:
+        work["err_baseline_168"] = np.abs(
+            work["y_true"] - work["lag_168"].to_numpy(dtype=np.float64)
+        )
+        by_hour_base = work.groupby("hora", observed=True)["err_baseline_168"].mean()
+        bottom.plot(
+            by_hour_base.index.to_numpy(dtype=int),
+            by_hour_base.to_numpy(),
+            marker="s",
+            color="#7F7F7F",
+            linestyle=":",
+            linewidth=1.6,
+            label="Baseline estacional (168h)",
+        )
+
+    for peak_range in ((6.5, 9.5), (16.5, 19.5)):
+        bottom.axvspan(
+            peak_range[0],
+            peak_range[1],
+            color="#FDBF6F",
+            alpha=0.22,
+            label="Horas pico" if peak_range[0] < 10 else None,
+        )
+
+    bottom.set_xticks(range(24))
+    bottom.set_xlabel("Hora del día (0-23 h)")
+    bottom.set_ylabel("MAE (viajes / estación-hora)")
+    bottom.set_title(
+        "Error absoluto medio por hora del día: mejor modelo vs. baseline estacional (168h)"
+    )
+    bottom.legend(loc="upper left", fontsize=9)
+
+    return _save(fig, "prediccion_vs_real_fase2.png", out_dir)
