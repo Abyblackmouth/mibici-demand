@@ -13,9 +13,11 @@ python -m mibici_demand.cli predecir  [--perfil limpio] [--etiqueta desde2022] [
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import gc
 import json
 from pathlib import Path
+from uuid import uuid4
 
 import pandas as pd
 
@@ -272,14 +274,15 @@ def cmd_entrenar(args) -> None:
             parquet_filters = [("hora_inicio", ">=", min_ts)]
 
     table = pd.read_parquet(table_path, filters=parquet_filters)
+    execution_folder = datetime.now().strftime("%Y%m%dT%H%M%S") + "_" + uuid4().hex[:8]
     out = train.tune_and_evaluate(
         table=table,
         models=tuple(args.modelos),
         horizon=args.horizonte,
         max_train_months=args.max_train_months,
         n_iter=args.n_iter,
-        models_dir=config.MODELS_DIR,
-        reports_dir=config.REPORTS_DIR,
+        models_dir=config.MODELS_DIR / "ejecuciones" / execution_folder,
+        reports_dir=config.REPORTS_DIR / "ejecuciones" / execution_folder,
         log_to_mlflow=bool(args.registrar_mlflow),
         etiqueta_ventana=args.etiqueta or "completa",
         sha256_tabla=dataset.sha256_file(table_path),

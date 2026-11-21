@@ -1,0 +1,11 @@
+{
+  "tracking_uri": "sqlite:///C:/Users/rejos/OneDrive/Documentos/MNA/MLOps/Entrega Final/mibici-demand/mlflow_integracion.db",
+  "run_id": "f130b2a5fa9c44f5a1a2ac8c004a7125",
+  "registered_model": "mibici-fase3-candidato",
+  "version": 2,
+  "alias": "candidate",
+  "model_uri": "models:/m-5846d2796e884064856f24a46216bff1",
+  "exact_joblib_uri": "runs:/f130b2a5fa9c44f5a1a2ac8c004a7125/artefacto_exacto/pipeline.joblib",
+  "joblib_sha256_recuperado": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+  "historical_champion_modified": false
+}

@@ -1,0 +1,71 @@
+{
+  "model": {
+    "model_version": "sha256:e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+    "artifact_sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+    "uso": "candidato_temporal_integracion_no_aprobado_produccion",
+    "release_id": "mibici-temporal-20260921-v1",
+    "forecast_origin_min": "2026-09-21T00:00:00-06:00",
+    "model_feature_columns": [
+      "estacion",
+      "hora",
+      "dia_semana",
+      "mes",
+      "es_fin_semana",
+      "lag_24",
+      "lag_168"
+    ],
+    "required_observation_fields": [
+      "estacion",
+      "hora_inicio",
+      "lag_24",
+      "lag_168"
+    ],
+    "input_dtypes": {
+      "estacion": "int64",
+      "hora": "int8",
+      "dia_semana": "int8",
+      "mes": "int8",
+      "es_fin_semana": "int8",
+      "lag_24": "float32",
+      "lag_168": "float32"
+    },
+    "fitted_imputer_dtype": "float32"
+  },
+  "horizonte": "24h",
+  "origen_pronostico": "2026-09-26T00:00:00-06:00",
+  "predicciones": [
+    {
+      "estacion": 2,
+      "hora_inicio": "2026-09-26T08:00:00-06:00",
+      "demanda_predicha": 2.728705012827481,
+      "diagnostico": {
+        "extreme_prediction": null,
+        "reference_capacity": null,
+        "criterion": "sin_referencia_de_capacidad",
+        "unknown_station": false
+      }
+    },
+    {
+      "estacion": 46,
+      "hora_inicio": "2026-09-26T21:00:00-06:00",
+      "demanda_predicha": 20.720247569805895,
+      "diagnostico": {
+        "extreme_prediction": null,
+        "reference_capacity": null,
+        "criterion": "sin_referencia_de_capacidad",
+        "unknown_station": false
+      }
+    },
+    {
+      "estacion": 999,
+      "hora_inicio": "2026-09-26T08:00:00-06:00",
+      "demanda_predicha": 1.0691387843421751,
+      "diagnostico": {
+        "extreme_prediction": null,
+        "reference_capacity": null,
+        "criterion": "sin_referencia_de_capacidad",
+        "unknown_station": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "predeclarado_utc": "2026-11-21T01:25:16Z",
+  "estado": "Extiende sin modificar los umbrales de la simulacion previa; resultados previos ya conocidos",
+  "corte": "2026-09-21",
+  "seleccion": "Ultimo corte causal por cronologia; no argmin de metricas de evaluacion",
+  "referencia": "Entrenamiento del ultimo corte temporal; solo distribuciones",
+  "monitoreo": "2026-09-21 a 2026-09-28 exclusivo, mismo artefacto de API y Docker",
+  "semilla": 42,
+  "horas_pico": [
+    7,
+    8,
+    9,
+    17,
+    18,
+    19
+  ],
+  "intensidades": [
+    0.1,
+    0.3,
+    0.5
+  ],
+  "familias": [
+    "composicion",
+    "faltantes",
+    "combinado"
+  ],
+  "mecanismos": {
+    "composicion": "Sustituir floor(intensidad*N_no_pico) posiciones no pico por registros pico completos, muestreados con reemplazo; no se consulta demanda para seleccionar",
+    "faltantes": "Ocultar ambos rezagos en floor(intensidad*N) posiciones aleatorias (MCAR); conservar etiquetas, calendario, tipos y fuentes originales",
+    "combinado": "Composicion seguida de faltantes con flujos aleatorios independientes; no atribuir su efecto a una sola causa",
+    "progresion": "Mascaras y sustituciones anidadas al 10, 30 y 50 por ciento, usando la misma semilla; intensidad de composicion se refiere a filas NO pico"
+  },
+  "detectores": {
+    "psi_bins": 10,
+    "suavizado_probabilidad": 1e-06,
+    "faltantes_en_psi": false,
+    "bins": "Cuantiles y limites aprendidos solo de la referencia; categorias y bucket desconocido fijos; mismos bins al comparar con control",
+    "ks": "Distancia empirica descriptiva para variables numericas, sin p-valores por dependencia temporal y datos discretos"
+  },
+  "umbrales": {
+    "psi_vigilancia": 0.1,
+    "psi_alerta": 0.25,
+    "faltantes_vigilancia": 0.01,
+    "faltantes_alerta": 0.05,
+    "degradacion_relativa": 0.1,
+    "mae_delta_min": 0.05,
+    "rmse_delta_min": 0.1,
+    "wape_delta_min": 0.02,
+    "r2_caida_min": 0.1
+  },
+  "justificacion": {
+    "drift": "PSI 0.10/0.25 son reglas ilustrativas de vigilancia y revision, no pruebas de significacion ni umbrales calibrados para MiBici",
+    "calidad": "1%/5% de faltantes criticos requieren observar/investigar disponibilidad; que el imputador responda no acredita calidad",
+    "desempeno": "Aumento >=10% y minimo absoluto en MAE/RMSE/WAPE evita disparar por variaciones minusculas; caida de R2 >=0.10 se evalua en unidades de R2, no porcentajes",
+    "limite": "No son SLO operativos aprobados; no se ajustaran tras ver esta simulacion y no activan reentrenamiento automatico"
+  }
+}

@@ -1,0 +1,468 @@
+{
+  "estado": "verificado",
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "161",
+    "time": "42.922",
+    "timestamp": "2026-11-20T20:21:14.307283-06:00",
+    "hostname": "LAPTOP-U2JRRC2V"
+  },
+  "archivos_evidencia_previos_preservados": 115,
+  "evidencias_previas_sha256_sin_cambios": {
+    "reports/.gitkeep": true,
+    "reports/compatibilidad_python313.json": true,
+    "reports/pytest-python313.xml": true,
+    "reports/resultados_modelos.csv": true,
+    "reports/resultados_modelos.json": true,
+    "reports/resumen_mlflow_registry.json": true,
+    "reports/resumen_mlflow_registry.md": true,
+    "reports/fase3/api_comprobaciones.json": true,
+    "reports/fase3/api_evidencia.json": true,
+    "reports/fase3/auditoria_backtesting.md": true,
+    "reports/fase3/comprobaciones.json": true,
+    "reports/fase3/cortes.json": true,
+    "reports/fase3/ejecucion.json": true,
+    "reports/fase3/errores_mayores.csv": true,
+    "reports/fase3/estado_actual.json": true,
+    "reports/fase3/evolucion_diaria.png": true,
+    "reports/fase3/limpieza.csv": true,
+    "reports/fase3/metricas_conjuntas.csv": true,
+    "reports/fase3/metricas_cortes.csv": true,
+    "reports/fase3/metricas_cortes.json": true,
+    "reports/fase3/metricas_diarias.csv": true,
+    "reports/fase3/metricas_por_corte.png": true,
+    "reports/fase3/procedencia_datos.json": true,
+    "reports/fase3/pytest.xml": true,
+    "reports/fase3/pytest_api.xml": true,
+    "reports/fase3/pytest_auditoria.xml": true,
+    "reports/fase3/validacion_api.md": true,
+    "reports/fase3/validacion_docker.md": true,
+    "reports/fase3/validacion_drift.md": true,
+    "reports/fase3/validacion_temporal.md": true,
+    "reports/fase3/versiones.json": true,
+    "reports/figures/.gitkeep": true,
+    "reports/figures/comparacion_modelos_fase2.png": true,
+    "reports/figures/demanda_hora_dia.png": true,
+    "reports/figures/distribucion_demanda.png": true,
+    "reports/figures/limpieza_por_regla.png": true,
+    "reports/figures/pca_estaciones.png": true,
+    "reports/figures/prediccion_vs_real_fase2.png": true,
+    "reports/figures/viajes_y_estaciones_por_mes.png": true,
+    "reports/figures/desde2022/.gitkeep": true,
+    "reports/figures/desde2022/demanda_hora_dia.png": true,
+    "reports/figures/desde2022/distribucion_demanda.png": true,
+    "reports/figures/desde2022/limpieza_por_regla.png": true,
+    "reports/figures/desde2022/pca_estaciones.png": true,
+    "reports/figures/desde2022/viajes_y_estaciones_por_mes.png": true,
+    "reports/fase3/auditoria/comparacion_baselines.csv": true,
+    "reports/fase3/auditoria/concentracion_error.csv": true,
+    "reports/fase3/auditoria/concentracion_error.png": true,
+    "reports/fase3/auditoria/distribuciones.csv": true,
+    "reports/fase3/auditoria/distribuciones.png": true,
+    "reports/fase3/auditoria/etapas_caso_extremo.csv": true,
+    "reports/fase3/auditoria/historial_estaciones.csv": true,
+    "reports/fase3/auditoria/preprocesamiento.csv": true,
+    "reports/fase3/auditoria/reserva_octubre2026.json": true,
+    "reports/fase3/auditoria/resumen.json": true,
+    "reports/fase3/auditoria/sensibilidad_diagnostica.csv": true,
+    "reports/fase3/auditoria/sensibilidad_precision.csv": true,
+    "reports/fase3/auditoria/soporte_variables.csv": true,
+    "reports/fase3/auditoria/top20_primer_corte.csv": true,
+    "reports/fase3/auditoria/trayectoria_caso_extremo.png": true,
+    "reports/fase3/docker/comprobaciones.json": true,
+    "reports/fase3/docker/evidencia.json": true,
+    "reports/fase3/docker/pytest_docker.xml": true,
+    "reports/fase3/docker/respuesta_docker.json": true,
+    "reports/fase3/docker/respuesta_windows.json": true,
+    "reports/fase3/drift/alertas_acciones.csv": true,
+    "reports/fase3/drift/bins_referencia.json": true,
+    "reports/fase3/drift/calidad_y_predicciones.png": true,
+    "reports/fase3/drift/comprobaciones.json": true,
+    "reports/fase3/drift/descomposicion_errores.csv": true,
+    "reports/fase3/drift/desempeno_intensidad.png": true,
+    "reports/fase3/drift/detectores_drift.csv": true,
+    "reports/fase3/drift/detectores_psi.png": true,
+    "reports/fase3/drift/distribuciones_bins.csv": true,
+    "reports/fase3/drift/distribuciones_comparativas.png": true,
+    "reports/fase3/drift/ejecucion.json": true,
+    "reports/fase3/drift/errores_mayores.csv": true,
+    "reports/fase3/drift/estadisticas_descriptivas.csv": true,
+    "reports/fase3/drift/metricas_escenarios.csv": true,
+    "reports/fase3/drift/plan_predeclarado.json": true,
+    "reports/fase3/drift/predicciones_escenarios.parquet": true,
+    "reports/fase3/drift/pytest_drift.xml": true,
+    "reports/fase3/drift/umbrales.csv": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/comprobaciones.json": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/cortes.json": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/ejecucion.json": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/errores_mayores.csv": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/estado_actual.json": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/evolucion_diaria.png": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/limpieza.csv": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_conjuntas.csv": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_cortes.csv": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_cortes.json": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_diarias.csv": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_por_corte.png": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/procedencia_datos.json": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/pytest.xml": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/validacion_temporal.md": true,
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/versiones.json": true,
+    "models/.gitkeep": true,
+    "models/best_pipeline.joblib": true,
+    "models/fase3/20261119T194736_d3f2c390/pipeline_20260907.joblib": true,
+    "models/fase3/20261119T194736_d3f2c390/pipeline_20260914.joblib": true,
+    "models/fase3/20261119T194736_d3f2c390/pipeline_20260921.joblib": true,
+    "models/fase3/20261119T195229_3cc516c1/pipeline_20260907.joblib": true,
+    "models/fase3/20261119T195229_3cc516c1/pipeline_20260914.joblib": true,
+    "models/fase3/20261119T195229_3cc516c1/pipeline_20260921.joblib": true,
+    "examples/predict_request.json": true,
+    "examples/predict_response.json": true,
+    "data/raw/fase3/datos_abiertos_2026_08.csv": true,
+    "data/raw/fase3/datos_abiertos_2026_09.csv": true,
+    "data/raw/fase3/manifest.csv": true,
+    "data/processed/fase3/demanda_horaria.parquet": true,
+    "data/processed/fase3/predicciones_backtest.parquet": true,
+    "data/processed/fase3/viajes_limpios.parquet": true
+  },
+  "metricas_tres_cortes": [
+    {
+      "corte": "2026-09-07 00:00:00",
+      "modelo": "hist_gbm_poisson",
+      "filas": 65240,
+      "metricas": {
+        "mae": 1.012858058741473,
+        "rmse": 3.8941509281265407,
+        "wape": 0.6785531181562682,
+        "r2": -1.3431394779695012
+      }
+    },
+    {
+      "corte": "2026-09-07 00:00:00",
+      "modelo": "baseline_diario_24h",
+      "filas": 65240,
+      "metricas": {
+        "mae": 1.2015328019619864,
+        "rmse": 2.237335774366322,
+        "wape": 0.8049536875397918,
+        "r2": 0.22654524165056045
+      }
+    },
+    {
+      "corte": "2026-09-07 00:00:00",
+      "modelo": "baseline_semanal_168h",
+      "filas": 65240,
+      "metricas": {
+        "mae": 1.0848099325567138,
+        "rmse": 2.235886315303206,
+        "wape": 0.7267564847713129,
+        "r2": 0.2275470831019546
+      }
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "modelo": "hist_gbm_poisson",
+      "filas": 65240,
+      "metricas": {
+        "mae": 1.0843300724233618,
+        "rmse": 1.9050636120161484,
+        "wape": 0.6337896012695209,
+        "r2": 0.5428547385590422
+      }
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "modelo": "baseline_diario_24h",
+      "filas": 65240,
+      "metricas": {
+        "mae": 1.4576946658491723,
+        "rmse": 2.639312750782654,
+        "wape": 0.8520207495274017,
+        "r2": 0.12256092564038645
+      }
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "modelo": "baseline_semanal_168h",
+      "filas": 65240,
+      "metricas": {
+        "mae": 1.2274218270999386,
+        "rmse": 2.1359632618081217,
+        "wape": 0.7174265568864958,
+        "r2": 0.4253243230077105
+      }
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "modelo": "hist_gbm_poisson",
+      "filas": 65520,
+      "metricas": {
+        "mae": 1.0787979639884653,
+        "rmse": 1.8094035974657825,
+        "wape": 0.5615409388870072,
+        "r2": 0.6491698071982843
+      }
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "modelo": "baseline_diario_24h",
+      "filas": 65520,
+      "metricas": {
+        "mae": 1.3968559218559218,
+        "rmse": 2.448131030673306,
+        "wape": 0.7270979479316454,
+        "r2": 0.3577629134433763
+      }
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "modelo": "baseline_semanal_168h",
+      "filas": 65520,
+      "metricas": {
+        "mae": 1.3018772893772894,
+        "rmse": 2.2495590396821936,
+        "wape": 0.6776592279519833,
+        "r2": 0.4577234121987477
+      }
+    }
+  ],
+  "escenarios_drift_verificados": [
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "control",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "composicion_10",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "composicion_30",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "composicion_50",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "faltantes_10",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "faltantes_30",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "faltantes_50",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "combinado_10",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "combinado_30",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/drift",
+      "escenario": "combinado_50",
+      "filas": 65240,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "control",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "composicion_10",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "composicion_30",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "composicion_50",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "faltantes_10",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "faltantes_30",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "faltantes_50",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "combinado_10",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "combinado_30",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    },
+    {
+      "experimento": "reports/fase3/integracion/drift_final",
+      "escenario": "combinado_50",
+      "filas": 65520,
+      "metricas_verificadas": true,
+      "etiquetas_y_fuentes_integras": true
+    }
+  ],
+  "metricas_mlflow_originales_verificadas": 36,
+  "mlflow_candidato_recargado_filas": 65520,
+  "mlflow_candidato_diferencia_maxima": 0.0,
+  "tests_historicos_ast_sin_cambios": true,
+  "relectura_fuentes_crudas": [
+    {
+      "archivo": "datos_abiertos_2026_08.csv",
+      "sha256_verificado": true,
+      "filas_sin_inicio": 0,
+      "filas_sin_fin": 0
+    },
+    {
+      "archivo": "datos_abiertos_2026_09.csv",
+      "sha256_verificado": true,
+      "filas_sin_inicio": 0,
+      "filas_sin_fin": 0
+    }
+  ],
+  "etiquetas_y_rezagos_desde_crudo": {
+    "etiquetas_verificadas": 196000,
+    "rezagos_verificados": 392000,
+    "discrepancias": 0
+  },
+  "checks": {
+    "ruff_check": {
+      "exit_code": 0,
+      "stdout": "All checks passed!",
+      "stderr": ""
+    },
+    "ruff_format": {
+      "exit_code": 0,
+      "stdout": "36 files already formatted",
+      "stderr": ""
+    },
+    "pip_check": {
+      "exit_code": 0,
+      "stdout": "No broken requirements found.",
+      "stderr": ""
+    },
+    "pip_check_clean": {
+      "exit_code": 0,
+      "stdout": "No broken requirements found.",
+      "stderr": ""
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it"
+    }
+  },
+  "credenciales_detectadas": [],
+  "alcance_credenciales": "Patrones de tokens GitHub/AWS y claves privadas; no es una auditoria de seguridad exhaustiva",
+  "archivos_github": 205,
+  "archivos_github_sha256": "bf453096269be27d0cb0198e352cd7bf40391f87d51cf6e05bcf03371e1addf1",
+  "git_head": "285aeac94f83020193d14d5037659523d7cbcaf8",
+  "rama": "fase3",
+  "codigo_sha256": {
+    "mibici_demand/__init__.py": "a26af178d0d0c50e23b3130fdf3b8f2b3526ed05abf5070f0948c91cea29ab97",
+    "mibici_demand/api.py": "d5871a2e70d326c915fdedddea3ad3986a1ad2811e51558698ac8bafb7a6d137",
+    "mibici_demand/cleaning.py": "4f12796668f33990354e999a1d73ff69c1b55996f2c14bd04e5b33e9caf35699",
+    "mibici_demand/cli.py": "51d2bf948824abe6fb661c0b2938a3e6db4de6d659bddcd84e106744843524f7",
+    "mibici_demand/config.py": "6b29e66ee40679e06e5ae6bb9fafe3a0d4f055daed48c566f7b506f3e6dd0174",
+    "mibici_demand/dataset.py": "3ff2edd2b6dc82871f6f7e058a858c9914cfe61240eafa14d4d9a28fd90b7382",
+    "mibici_demand/features.py": "ba303c5848c42f9671b796ae24bbc12e67a068733c17232905806b5cd5e85cdf",
+    "mibici_demand/modeling/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mibici_demand/modeling/audit_backtest.py": "040c849b185ff3afbd7d2521c6b1371a60eb61aecf40285cbd0efb6e87cc39ab",
+    "mibici_demand/modeling/backtest.py": "f102d5996888229a8ff9670f255fde4c9144f7cfd9f1733663f7981088501f03",
+    "mibici_demand/modeling/pipeline.py": "d9242615d4d823fa9d615c8797e4034c2e248d4070f24022281885c8ada0d776",
+    "mibici_demand/modeling/predict.py": "b08a1778505ca288668a0a58ce75e16f1ffcc11b90cf69f6fcdc37b4bd947041",
+    "mibici_demand/modeling/train.py": "649ba0abbcba132957df55c4fe8539cd20602f884ac8600210b98cfe880fadde",
+    "mibici_demand/monitoring/__init__.py": "c28b49884451f2e1a627a088036a4fd7c23864202b10c1c67d031f775648377f",
+    "mibici_demand/monitoring/drift.py": "426cfd485dedc0e653ff94899ff43e95c7a990ed2c463610eebc907ea353e5b9",
+    "mibici_demand/monitoring/reporting.py": "e9f1775ef430f21e2ed2d919ca6bbb5fe31fb9a439b514782bb7bf49e8a8f114",
+    "mibici_demand/plots.py": "492b15b4db5f143ececbfbb2e4f1134d7bc4eb189e7bc7e745696c2a09cc79a2",
+    "mibici_demand/release.py": "a73adbdca2273d5d7f7ad65254a2810183ac3ad95efa4f5d29374e4d0f3fefc2",
+    "mibici_demand/reproduce.py": "72fa793bb3dd9b409ba8bf9fa74b5fc898901a5aff151a9f318fdea2075224fd",
+    "mibici_demand/temporal.py": "dd29f8f46fe5efc4ae8b718f536107449703ac0a40aec48fd4da0b32ae4657b9",
+    "mibici_demand/tracking.py": "0a596a7cd023f919399a9657faec80354131d76ee1c96d86e4d7af069ce2befd",
+    "scripts/artifacts.py": "a02f033f274fe295445629bbc3be8c169a03fede8243951024cadb02b2032198",
+    "scripts/audit_integration.py": "e8ae66ffb722a298e405f27df5044cdeb709a6edfca931a2a9608334d8068e61",
+    "scripts/prepare_release.py": "2174046089052ea965d0b4bb216e466a1d44da842608e9653937af5a57f778c2",
+    "scripts/register_release.py": "7837610ffd5262f19f4daa163fb58a9c506e4a231b1b45a61cd5ebac24911eb2",
+    "scripts/verify_api.py": "a47097360834d0ce74050b944d90a36cabbb0a0cc80e9fe530e2fe0460fd830b",
+    "scripts/verify_docker.py": "7a0125a7534fbab48e40289d6bdb3f457b223ae3904e1d130988e90fb7eeca5d",
+    "scripts/verify_final.py": "1b98fea9c1704c7016ee5987794ab12034a969618d6bbb8b1bddcdba32f68aff",
+    "scripts/write_integration_report.py": "98c5be0a966faeef5790c604721fee8cb267048dcb6534e6b747d1cd4859b82a",
+    "tests/test_api.py": "078942c1d922b716e74a43e63aa4bd9e6d34b54c7a293841449cd02e3249a3a4",
+    "tests/test_backtest_audit.py": "48b66469236c1eb5caef297243b47bd7767a08b0f62e6759343ef92d086f6f0a",
+    "tests/test_docker.py": "c53e9aad03cb52af8842b88eb6b2402b08c3f46437a7058c3e1cd495c4ba10d1",
+    "tests/test_drift.py": "b096470b520b9a65f1cc5cc9e48207b8f3d34f7646b9c0d276599e4d62b45c39",
+    "tests/test_final_integration.py": "58203a9a17374b168d20b8f99a8eb11f3bfa64168f441dddca4a14e242cfe855",
+    "tests/test_pipeline.py": "c2ff3c9a0027c0b64f4364fc259c02b7db5e7c9810df76a1bfbafa63d5e84001",
+    "tests/test_temporal_backtest.py": "8180160070ffb8ba8b93aff8ff1816cf5cd49210026602ad467a686e228bca39"
+  }
+}

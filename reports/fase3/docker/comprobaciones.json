@@ -1,0 +1,33 @@
+{
+  "estado": "comprobado",
+  "pytest": {
+    "tests": "107",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "54.677"
+  },
+  "archivos_previos_conservados": 83,
+  "hashes_previos_sin_cambios": true,
+  "image_id": "sha256:2e2764270388e5f444a577b5dc46252d9c2867b4890a5544a7f03b78589a0187",
+  "sha256_modelo_windows": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+  "sha256_modelo_linux": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+  "diferencias_maximas": {
+    "windows_python": 0.0,
+    "windows_fastapi": 0.0,
+    "docker_python": 0.0,
+    "docker_fastapi": 0.0,
+    "docker_fastapi_interno": 0.0,
+    "windows_fastapi_evidencia_previa": 0.0
+  },
+  "runtime_files": 9,
+  "sin_montajes": true,
+  "mlflow_ausente": true,
+  "codigo_sha256": {
+    "Dockerfile": "b0e9e88daa9a2091092960de6175ef833e028c1c2604c4414c4667fdb2c238ea",
+    ".dockerignore": "451a4ca8b7fd819e78300ce6bc875854bcae9de2c1fc0e248b2a2e46a8dbd83e",
+    "requirements-linux-py313.txt": "107f911b0439620825a17c7fd888edc552ed5f9bd011e72478675eb6d5f659a9",
+    "scripts/verify_docker.py": "ca66ef9e5cbe66a607c216d44b5eaf9ac7ee64c661245de67f5c71c50c564f99",
+    "tests/test_docker.py": "c53e9aad03cb52af8842b88eb6b2402b08c3f46437a7058c3e1cd495c4ba10d1"
+  }
+}

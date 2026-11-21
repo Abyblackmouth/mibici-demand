@@ -1,0 +1,32 @@
+{
+  "origen_pronostico": "2026-09-12T00:00:00-06:00",
+  "observaciones": [
+    {
+      "estacion": 2,
+      "hora_inicio": "2026-09-12T08:00:00-06:00",
+      "lag_24": 1.0,
+      "lag_168": 1.0,
+      "latitud": 20.6744,
+      "longitud": -103.362224,
+      "capacidad": 15.0
+    },
+    {
+      "estacion": 46,
+      "hora_inicio": "2026-09-12T21:00:00-06:00",
+      "lag_24": 0.0,
+      "lag_168": 50.0,
+      "latitud": 20.6744,
+      "longitud": -103.362224,
+      "capacidad": 15.0
+    },
+    {
+      "estacion": 999,
+      "hora_inicio": "2026-09-12T08:00:00-06:00",
+      "lag_24": 1.0,
+      "lag_168": 1.0,
+      "latitud": 20.6744,
+      "longitud": -103.362224,
+      "capacidad": 15.0
+    }
+  ]
+}

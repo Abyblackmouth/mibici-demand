@@ -1,0 +1,307 @@
+{
+  "estado": "comprobado",
+  "rama": "fase3",
+  "python": "3.13.0",
+  "pytest": {
+    "tests": "140",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "47.997"
+  },
+  "pruebas_anteriores": 107,
+  "pruebas_nuevas": 33,
+  "advertencias": 4,
+  "archivos_previos_verificados": 127,
+  "hashes_previos_sin_cambios": true,
+  "archivos_previos_sha256": {
+    ".dockerignore": "451a4ca8b7fd819e78300ce6bc875854bcae9de2c1fc0e248b2a2e46a8dbd83e",
+    ".gitignore": "9bac3fc307fb2e2a32bfe34ef20f50222c1cb029c4f2f08f68ae18b17f6600ba",
+    "data/processed/fase3/demanda_horaria.parquet": "62fb78c7d7e5448fa6eeeebc233b97a771c4e458813c279cacc437048489ebda",
+    "data/processed/fase3/predicciones_backtest.parquet": "edf1ae0ba81b9badcc3dfa8c77f0f119dd0c981de6a12388d1d41e04b3d41090",
+    "data/processed/fase3/viajes_limpios.parquet": "653f66b4098dcaf6e181cb9b7db8a82cb27d0bcc37a43e6f879de5a2b7774834",
+    "data/raw/fase3/datos_abiertos_2026_08.csv": "e34f39b9ad204ae0b66f3538894a5f86ed03f46d98701169d3e4d95952d5f671",
+    "data/raw/fase3/datos_abiertos_2026_09.csv": "00b5cf64cc31a502d01044d905f6e033f9bc1db962e771119742fd25c6cb58b3",
+    "data/raw/fase3/manifest.csv": "ca800d427f9cd21b79aeb72ed9404a5acff1ee5221b35fc73eebf61cbf6f21b9",
+    "data/raw/manifest.csv": "fe4b1db272327528f63027c7d1a1340a94275b0410af5b5517991ec0347388a7",
+    "Dockerfile": "b0e9e88daa9a2091092960de6175ef833e028c1c2604c4414c4667fdb2c238ea",
+    "examples/predict_request.json": "e4ffd85033074ab6a6b863be74a2c48cd18b09ba698b422e628abf4a2575d237",
+    "examples/predict_response.json": "3cc725f4844c0c7744cf0a6448db622adc02ab5d42e3c1bddb8af352b6b4e79a",
+    "mibici_demand/__init__.py": "a26af178d0d0c50e23b3130fdf3b8f2b3526ed05abf5070f0948c91cea29ab97",
+    "mibici_demand/api.py": "7f8733042b904db6fc55011724a2d519489e2948d1f2794fa5087331ef0e975e",
+    "mibici_demand/cleaning.py": "4f12796668f33990354e999a1d73ff69c1b55996f2c14bd04e5b33e9caf35699",
+    "mibici_demand/cli.py": "b177bb3ed885ee430d87d46a7fb82d354a6fcdeb013868284991ec5996bf5065",
+    "mibici_demand/config.py": "6b29e66ee40679e06e5ae6bb9fafe3a0d4f055daed48c566f7b506f3e6dd0174",
+    "mibici_demand/dataset.py": "3ff2edd2b6dc82871f6f7e058a858c9914cfe61240eafa14d4d9a28fd90b7382",
+    "mibici_demand/features.py": "ba303c5848c42f9671b796ae24bbc12e67a068733c17232905806b5cd5e85cdf",
+    "mibici_demand/modeling/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mibici_demand/modeling/audit_backtest.py": "040c849b185ff3afbd7d2521c6b1371a60eb61aecf40285cbd0efb6e87cc39ab",
+    "mibici_demand/modeling/backtest.py": "57ec1029b5f4cbb6769d70e0a38a78cdabd2589148a6fc016668ca298ab466d2",
+    "mibici_demand/modeling/pipeline.py": "d9242615d4d823fa9d615c8797e4034c2e248d4070f24022281885c8ada0d776",
+    "mibici_demand/modeling/predict.py": "b08a1778505ca288668a0a58ce75e16f1ffcc11b90cf69f6fcdc37b4bd947041",
+    "mibici_demand/modeling/train.py": "62c900c6876a826aed754f44f430e5cf00830923afc47d72c0c8711b3e9d194d",
+    "mibici_demand/plots.py": "492b15b4db5f143ececbfbb2e4f1134d7bc4eb189e7bc7e745696c2a09cc79a2",
+    "mibici_demand/temporal.py": "dd29f8f46fe5efc4ae8b718f536107449703ac0a40aec48fd4da0b32ae4657b9",
+    "mibici_demand/tracking.py": "0a596a7cd023f919399a9657faec80354131d76ee1c96d86e4d7af069ce2befd",
+    "models/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "models/best_pipeline.joblib": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+    "models/fase3/20261119T194736_d3f2c390/pipeline_20260907.joblib": "356a20f59e4b72202faf5a40986e0282aadcc05840f070a367527c74a47513a0",
+    "models/fase3/20261119T194736_d3f2c390/pipeline_20260914.joblib": "6f8ffc5572458864871861671afdf4c7c53e3ad66b015f5eace6177a72fe080f",
+    "models/fase3/20261119T194736_d3f2c390/pipeline_20260921.joblib": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+    "models/fase3/20261119T195229_3cc516c1/pipeline_20260907.joblib": "356a20f59e4b72202faf5a40986e0282aadcc05840f070a367527c74a47513a0",
+    "models/fase3/20261119T195229_3cc516c1/pipeline_20260914.joblib": "6f8ffc5572458864871861671afdf4c7c53e3ad66b015f5eace6177a72fe080f",
+    "models/fase3/20261119T195229_3cc516c1/pipeline_20260921.joblib": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+    "pyproject.toml": "69096ba08bd75e9fc5f65a8699ebb02fe18d008bc7d856c1bb0742eb42787512",
+    "reports/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/compatibilidad_python313.json": "5e8eb54c53d8dabd2d42a7646d0edc0e00119b0eb61d99b8db3def1e5fa0a496",
+    "reports/fase3/api_comprobaciones.json": "275e2002977d750f0e183040b864badc204ec4840e1b58d9f273148a783f7a47",
+    "reports/fase3/api_evidencia.json": "8cb20f3b614c220cb080aa1d5835839a3daf744b90a34f6e6c8f6fd155f6efb6",
+    "reports/fase3/auditoria/comparacion_baselines.csv": "1e283b10876509ec9ac65a52f8818490c992056c4ab66d54aef3ac425113b387",
+    "reports/fase3/auditoria/concentracion_error.csv": "7c2e7e337fef8d7c6b3de1782e8b2fba2c6de97dd95dfeaca05ff26ff47f69f2",
+    "reports/fase3/auditoria/concentracion_error.png": "e8d5e092f10d6853dcb2f19e7e0bee0146abe64c10730645284fa1e0a35186d0",
+    "reports/fase3/auditoria/distribuciones.csv": "2183351c2f4ecb2eabb1f434ff1dac7aacf6daea267a9b9d78f18dc7adbd8297",
+    "reports/fase3/auditoria/distribuciones.png": "bb98461d127d8ed5855e83062cd66ccb0bebb481b4931a05a753afd01003290d",
+    "reports/fase3/auditoria/etapas_caso_extremo.csv": "52c2db613554037575df984ae64a9945acb643b6a7aeeb6f3c7578e609baac01",
+    "reports/fase3/auditoria/historial_estaciones.csv": "210eccf547d3934d3cabd60c1aa256e7e0e59e939300098918de10f85af01d0d",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/comprobaciones.json": "baa7778139d2a85b2cb7a16f12efb3d28a3181b90f631e41e29ff54249c82c62",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/cortes.json": "b3e6fd033f8a757c232672ebbfbbc9a3f8124f277670ac1eaac81eb26bd598a4",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/ejecucion.json": "a601fd9cda4bb2e472c3f284d544dcb188beeaaeccc82185e7fc1c6682b40e54",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/errores_mayores.csv": "bab5b1800c1a30f4c69d06526d6473c5951f0f3a8ac2c3a5b266c1da24db9a42",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/estado_actual.json": "2d87c7605dce52845b062f1a7ca1814f350bc003baa7d431bbd13bbbbae5233c",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/evolucion_diaria.png": "c953134eb61c31af8e22220cab2176bd5c81e44bd240d9bf491223c53888139f",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/limpieza.csv": "71c4967b65eb5d9f6cf92f64cc5cab23ac27694a689346762a764953172b4572",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_conjuntas.csv": "e3244765684968f8156b6fcd05cfa64cbe603235abab94eed8a0cfeae2066cee",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_cortes.csv": "a2ee65fdcc780aec14d0e0c74745a80d81b0c668a0c9d9502f65f81965752a07",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_cortes.json": "69384c221e722d3cbd5e01efe7f20da0580355b5b3b2ddcde14631b7bf539173",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_diarias.csv": "7a15ffdcb98e767907fed93763b9ba956326c9b03c81f6a9da86534a1d259a85",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/metricas_por_corte.png": "43afa82450b8a95bd8b94f6a8de09588c3691af2aba58d1eddf2a3416008e193",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/procedencia_datos.json": "301a93ec0a66d659a3128e8efe33fe8b787d099f5fb9cd8b2b2f4c161e01184e",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/pytest.xml": "c3d913ea7f0dacbea803a63a298dec8cbf772ffa3acff6a85ae4a0c6d940dae8",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/validacion_temporal.md": "09cb8432801185c30c2283a06c993689c084a341524b745bf165e025dd280256",
+    "reports/fase3/auditoria/originales/20261119T195229_3cc516c1/versiones.json": "46ab101edf1c56700e4e0e9d9501cfd481628af37330e5b966fd10a041b96774",
+    "reports/fase3/auditoria/preprocesamiento.csv": "8c296693ba77731e747149c711eacf9f3a554f18dd23c15939450922e2aeb594",
+    "reports/fase3/auditoria/reserva_octubre2026.json": "4ea5db361204d36b25abd47f4146382657caedd1e97baaaef4a70b9333b48eb0",
+    "reports/fase3/auditoria/resumen.json": "c092743c1419cf84fe0253bf3e05dc62a27e0e50941f8e87370db6b51c29d697",
+    "reports/fase3/auditoria/sensibilidad_diagnostica.csv": "4e5146a94d376364dd7e6065ab9aca42e210b8e27418112bb5db5056aa03b589",
+    "reports/fase3/auditoria/sensibilidad_precision.csv": "ddd3222cad73279ed7206a79857fa502cee8c8c0f81fd6f10387ff6258a05ff9",
+    "reports/fase3/auditoria/soporte_variables.csv": "d2f5d36d39b915fb9e596f8ab6f24dc7f04fccea5c8ecb58ca06515157874492",
+    "reports/fase3/auditoria/top20_primer_corte.csv": "62b4b2599f1b018d0ebbec2111350908230619fc57428901c7dd54e43abb756d",
+    "reports/fase3/auditoria/trayectoria_caso_extremo.png": "472eb29b97f8832ad23d18248caac2878bae29f7ed9bfc5739fd94d8ffa5e051",
+    "reports/fase3/auditoria_backtesting.md": "912f8445acdb18994977a1b759d7d56f1ec12f20f2efa8b069718726115b08cc",
+    "reports/fase3/comprobaciones.json": "baa7778139d2a85b2cb7a16f12efb3d28a3181b90f631e41e29ff54249c82c62",
+    "reports/fase3/cortes.json": "b3e6fd033f8a757c232672ebbfbbc9a3f8124f277670ac1eaac81eb26bd598a4",
+    "reports/fase3/docker/comprobaciones.json": "e6292d182c266d8d136cc3c0d1b4e999f7232132edc2aee7c28cd3649794a210",
+    "reports/fase3/docker/evidencia.json": "bbf062b2b7f31cb99584d1fc59db4fc86de10c3fe788b7475f985278a24e27d3",
+    "reports/fase3/docker/pytest_docker.xml": "0238f5b4483397a257a9a80298e12c47707352c02f52b0174d002b3e8329c8d1",
+    "reports/fase3/docker/respuesta_docker.json": "3cc725f4844c0c7744cf0a6448db622adc02ab5d42e3c1bddb8af352b6b4e79a",
+    "reports/fase3/docker/respuesta_windows.json": "3cc725f4844c0c7744cf0a6448db622adc02ab5d42e3c1bddb8af352b6b4e79a",
+    "reports/fase3/ejecucion.json": "a601fd9cda4bb2e472c3f284d544dcb188beeaaeccc82185e7fc1c6682b40e54",
+    "reports/fase3/errores_mayores.csv": "bab5b1800c1a30f4c69d06526d6473c5951f0f3a8ac2c3a5b266c1da24db9a42",
+    "reports/fase3/estado_actual.json": "2d87c7605dce52845b062f1a7ca1814f350bc003baa7d431bbd13bbbbae5233c",
+    "reports/fase3/evolucion_diaria.png": "c953134eb61c31af8e22220cab2176bd5c81e44bd240d9bf491223c53888139f",
+    "reports/fase3/limpieza.csv": "71c4967b65eb5d9f6cf92f64cc5cab23ac27694a689346762a764953172b4572",
+    "reports/fase3/metricas_conjuntas.csv": "e3244765684968f8156b6fcd05cfa64cbe603235abab94eed8a0cfeae2066cee",
+    "reports/fase3/metricas_cortes.csv": "a2ee65fdcc780aec14d0e0c74745a80d81b0c668a0c9d9502f65f81965752a07",
+    "reports/fase3/metricas_cortes.json": "69384c221e722d3cbd5e01efe7f20da0580355b5b3b2ddcde14631b7bf539173",
+    "reports/fase3/metricas_diarias.csv": "7a15ffdcb98e767907fed93763b9ba956326c9b03c81f6a9da86534a1d259a85",
+    "reports/fase3/metricas_por_corte.png": "43afa82450b8a95bd8b94f6a8de09588c3691af2aba58d1eddf2a3416008e193",
+    "reports/fase3/procedencia_datos.json": "301a93ec0a66d659a3128e8efe33fe8b787d099f5fb9cd8b2b2f4c161e01184e",
+    "reports/fase3/pytest.xml": "c3d913ea7f0dacbea803a63a298dec8cbf772ffa3acff6a85ae4a0c6d940dae8",
+    "reports/fase3/pytest_api.xml": "a1638b215d59e15f30e9ccf4d6b3d7492c43ccd38d883e15ac03fd25dd787c2d",
+    "reports/fase3/pytest_auditoria.xml": "45413f8e583b5f14a595f7c66a8c0b7d898de9742c08fc603a9eaf97130d93f7",
+    "reports/fase3/validacion_api.md": "f7a287e702d9c0ab2ad5fd35d26f185041c9373933f51815fb1b4ea48df2ec0e",
+    "reports/fase3/validacion_docker.md": "8586737ceb594bbe00ad06394e72cf6838af1e6370476ed640476e53caae61c8",
+    "reports/fase3/validacion_temporal.md": "09cb8432801185c30c2283a06c993689c084a341524b745bf165e025dd280256",
+    "reports/fase3/versiones.json": "46ab101edf1c56700e4e0e9d9501cfd481628af37330e5b966fd10a041b96774",
+    "reports/figures/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/figures/comparacion_modelos_fase2.png": "c897110ab41e9dea69c278cfa81d8af2fa1a9103bac68eee61d3469fc3946051",
+    "reports/figures/demanda_hora_dia.png": "a05315b28414304b8a5e9b67e538e035ec4dfa00cc25265512405d75eb04b677",
+    "reports/figures/desde2022/.gitkeep": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+    "reports/figures/desde2022/demanda_hora_dia.png": "8a9d60432be4663012f46a87e71e04f69d416a61767faffa2ffd0ef20b2cf314",
+    "reports/figures/desde2022/distribucion_demanda.png": "ae41e22f8bd5f015461c856c3541bee9646184257e015593b816beaacf383c99",
+    "reports/figures/desde2022/limpieza_por_regla.png": "1e7c3dfd21fd74c4ffe8c2731a94ac466a4a4914b4e96008efa5f6fc7435711c",
+    "reports/figures/desde2022/pca_estaciones.png": "0554159b8f543daad8f88e76e6dbce97154cf1f0d6bd73c03ef20bc716befc60",
+    "reports/figures/desde2022/viajes_y_estaciones_por_mes.png": "c1a9d0c1e1798ce9ea9344867e004ca903c16688abac9fffc9678e36e666c623",
+    "reports/figures/distribucion_demanda.png": "430d19db01fb75c578003b89b3297d0dd0dc99f018f5a70fe601efe60996d8fa",
+    "reports/figures/limpieza_por_regla.png": "1e7c3dfd21fd74c4ffe8c2731a94ac466a4a4914b4e96008efa5f6fc7435711c",
+    "reports/figures/pca_estaciones.png": "7f07e24fce6f371118dce1a69564d995dba8915a0338700be7f8994c64ee1869",
+    "reports/figures/prediccion_vs_real_fase2.png": "6c6973afd8dc29f477b5267fe30da66bb7dd006b9048b52760fe3d6dd0ccf1d4",
+    "reports/figures/viajes_y_estaciones_por_mes.png": "c1a9d0c1e1798ce9ea9344867e004ca903c16688abac9fffc9678e36e666c623",
+    "reports/pytest-python313.xml": "cba417a4ed1a5e9a7ab6a036d699241f0bc68a80f72b98c979fcf8bc39ab1abe",
+    "reports/resultados_modelos.csv": "c6f684c5dd15b258e604514266e03d8ce70b4a24f86aabdd5c7193decf8e9478",
+    "reports/resultados_modelos.json": "2abef268f37d4a7dc45085fe7edbef506a93578b0209475f507b5dd7b375f308",
+    "reports/resumen_mlflow_registry.json": "d380444e6fd2b8b7c4de7387ab8d3d8511f3922408ec1efc2799c2058f2d8eea",
+    "reports/resumen_mlflow_registry.md": "4b8e619c7f6ae0b1fda8d1ca91cb7c3ea4a42eac9b15d0590b5774a93c7b7926",
+    "requirements-linux-py313.txt": "107f911b0439620825a17c7fd888edc552ed5f9bd011e72478675eb6d5f659a9",
+    "requirements-win-py313.txt": "c775a1635c91fb2f5364a0d4bb40e78ecdfc6e17efd20df3a754b261fda14fe1",
+    "requirements.txt": "dfe74aaa9301c777a4e431a729e5734c7db49b545d6efda4b22f0004d331b993",
+    "scripts/verify_api.py": "a47097360834d0ce74050b944d90a36cabbb0a0cc80e9fe530e2fe0460fd830b",
+    "scripts/verify_docker.py": "ca66ef9e5cbe66a607c216d44b5eaf9ac7ee64c661245de67f5c71c50c564f99",
+    "tests/test_api.py": "078942c1d922b716e74a43e63aa4bd9e6d34b54c7a293841449cd02e3249a3a4",
+    "tests/test_backtest_audit.py": "48b66469236c1eb5caef297243b47bd7767a08b0f62e6759343ef92d086f6f0a",
+    "tests/test_docker.py": "c53e9aad03cb52af8842b88eb6b2402b08c3f46437a7058c3e1cd495c4ba10d1",
+    "tests/test_pipeline.py": "314c443530797c2f01b6bf682a5916b4ac6e1639d10bc3ce638dc39859740cdc",
+    "tests/test_temporal_backtest.py": "8180160070ffb8ba8b93aff8ff1816cf5cd49210026602ad467a686e228bca39"
+  },
+  "modelo_temporal_sha256": "356a20f59e4b72202faf5a40986e0282aadcc05840f070a367527c74a47513a0",
+  "modelo_desplegado_sin_cambios": true,
+  "octubre_consumido": false,
+  "repeticiones_simulacion": 2,
+  "metricas_identicas_byte_a_byte": true,
+  "metricas_escenarios_sha256": "087c5613b4335f9720f685821d13c7791ae2b4f55614445891cc2d8772c86d60",
+  "control_diferencia_maxima_backtest": 0.0,
+  "filas_verificadas": 652400,
+  "verificacion_independiente": [
+    {
+      "escenario": "control",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.012858058741473,
+        "rmse": 3.8941509281265407,
+        "wape": 0.6785531181562682,
+        "r2": -1.3431394779695012
+      }
+    },
+    {
+      "escenario": "composicion_10",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.0289731665595956,
+        "rmse": 3.75707245261979,
+        "wape": 0.6640243865864922,
+        "r2": -1.0570273901188298
+      }
+    },
+    {
+      "escenario": "composicion_30",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.0635460716586296,
+        "rmse": 3.285402485172516,
+        "wape": 0.6439631892472156,
+        "r2": -0.4817068258614836
+      }
+    },
+    {
+      "escenario": "composicion_50",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.11293253901849,
+        "rmse": 3.2043126160902218,
+        "wape": 0.6348382370297476,
+        "r2": -0.3123412380405417
+      }
+    },
+    {
+      "escenario": "faltantes_10",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.0328871366354266,
+        "rmse": 3.915456618728662,
+        "wape": 0.6919713786335794,
+        "r2": -1.3688492015727656
+      }
+    },
+    {
+      "escenario": "faltantes_30",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.0637628967274173,
+        "rmse": 3.875760765376457,
+        "wape": 0.7126562545695991,
+        "r2": -1.3210607404003265
+      }
+    },
+    {
+      "escenario": "faltantes_50",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.092560925456494,
+        "rmse": 3.7554487979294517,
+        "wape": 0.7319491772276362,
+        "r2": -1.1791958945183176
+      }
+    },
+    {
+      "escenario": "combinado_10",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.050485846653072,
+        "rmse": 3.7857060246948007,
+        "wape": 0.6779071044912401,
+        "r2": -1.0885010913185473
+      }
+    },
+    {
+      "escenario": "combinado_30",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.1231493415947174,
+        "rmse": 3.352190173033118,
+        "wape": 0.6800521870070847,
+        "r2": -0.5425612454250632
+      }
+    },
+    {
+      "escenario": "combinado_50",
+      "n": 65240,
+      "etiquetas_y_timestamps_integros": true,
+      "lags_causales_y_float32": true,
+      "metricas_recalculadas_independientemente": {
+        "mae": 1.211363137275016,
+        "rmse": 3.221108671568043,
+        "wape": 0.6909849532737212,
+        "r2": -0.3261351015660263
+      }
+    }
+  ],
+  "comandos_ejecutados": [
+    {
+      "cwd": ".",
+      "comando": ".venv\\Scripts\\python.exe -m mibici_demand.monitoring.drift --threads 4",
+      "repeticiones": 2
+    },
+    {
+      "cwd": ".",
+      "comando": ".venv\\Scripts\\python.exe -m pytest tests/test_drift.py -q --basetemp .venv/drift-unit-tests -o cache_dir=.venv/drift-pytest-cache",
+      "resultado": "33 passed"
+    },
+    {
+      "cwd": ".venv/compatibility-check",
+      "comando": "..\\Scripts\\python.exe -m pytest ..\\..\\tests -q --rootdir ..\\.. --basetemp drift-full-tests -o cache_dir=cache --junitxml=..\\..\\reports\\fase3\\drift\\pytest_drift.xml",
+      "resultado": "140 passed, 4 warnings"
+    },
+    {
+      "cwd": ".",
+      "comando": ".venv\\Scripts\\python.exe -m mibici_demand.monitoring.drift --actualizar-reporte"
+    },
+    {
+      "cwd": ".",
+      "comando": ".venv\\Scripts\\python.exe -m ruff check mibici_demand/monitoring tests/test_drift.py",
+      "resultado": "All checks passed"
+    },
+    {
+      "cwd": ".",
+      "comando": ".venv\\Scripts\\python.exe -m ruff format --check mibici_demand/monitoring tests/test_drift.py",
+      "resultado": "4 files already formatted"
+    }
+  ]
+}

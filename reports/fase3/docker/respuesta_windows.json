@@ -1,0 +1,78 @@
+{
+  "model": {
+    "model_version": "sha256:0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+    "artifact_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+    "uso": "referencia_integracion_no_validado_prospectivamente",
+    "model_feature_columns": [
+      "estacion",
+      "hora",
+      "dia_semana",
+      "mes",
+      "es_fin_semana",
+      "lag_24",
+      "lag_168",
+      "latitud",
+      "longitud",
+      "capacidad"
+    ],
+    "required_observation_fields": [
+      "estacion",
+      "hora_inicio",
+      "lag_24",
+      "lag_168",
+      "latitud",
+      "longitud",
+      "capacidad"
+    ],
+    "input_dtypes": {
+      "estacion": "int16",
+      "hora": "int8",
+      "dia_semana": "int8",
+      "mes": "int8",
+      "es_fin_semana": "int8",
+      "lag_24": "float32",
+      "lag_168": "float32",
+      "latitud": "float64",
+      "longitud": "float64",
+      "capacidad": "float64"
+    },
+    "fitted_imputer_dtype": "float64"
+  },
+  "horizonte": "24h",
+  "origen_pronostico": "2026-09-12T00:00:00-06:00",
+  "predicciones": [
+    {
+      "estacion": 2,
+      "hora_inicio": "2026-09-12T08:00:00-06:00",
+      "demanda_predicha": 2.6798914860304888,
+      "diagnostico": {
+        "extreme_prediction": false,
+        "reference_capacity": 15.0,
+        "criterion": "prediccion_mayor_que_capacidad",
+        "unknown_station": false
+      }
+    },
+    {
+      "estacion": 46,
+      "hora_inicio": "2026-09-12T21:00:00-06:00",
+      "demanda_predicha": 1.6550795827162177,
+      "diagnostico": {
+        "extreme_prediction": false,
+        "reference_capacity": 15.0,
+        "criterion": "prediccion_mayor_que_capacidad",
+        "unknown_station": false
+      }
+    },
+    {
+      "estacion": 999,
+      "hora_inicio": "2026-09-12T08:00:00-06:00",
+      "demanda_predicha": 1.1398398001926293,
+      "diagnostico": {
+        "extreme_prediction": false,
+        "reference_capacity": 15.0,
+        "criterion": "prediccion_mayor_que_capacidad",
+        "unknown_station": true
+      }
+    }
+  ]
+}

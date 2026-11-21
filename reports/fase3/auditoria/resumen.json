@@ -1,0 +1,128 @@
+{
+  "fecha": "2026-11-19T20:20:55.753211-06:00",
+  "rama": "fase3",
+  "ejecucion_auditada": "20261119T195229_3cc516c1",
+  "error_implementacion_detectado": false,
+  "modelos_reentrenados": false,
+  "hiperparametros_y_ventana_modificados": false,
+  "instantanea": {
+    "ejecucion_original": "20261119T195229_3cc516c1",
+    "archivos_sha256": {
+      "comprobaciones.json": "baa7778139d2a85b2cb7a16f12efb3d28a3181b90f631e41e29ff54249c82c62",
+      "cortes.json": "b3e6fd033f8a757c232672ebbfbbc9a3f8124f277670ac1eaac81eb26bd598a4",
+      "ejecucion.json": "a601fd9cda4bb2e472c3f284d544dcb188beeaaeccc82185e7fc1c6682b40e54",
+      "errores_mayores.csv": "bab5b1800c1a30f4c69d06526d6473c5951f0f3a8ac2c3a5b266c1da24db9a42",
+      "estado_actual.json": "2d87c7605dce52845b062f1a7ca1814f350bc003baa7d431bbd13bbbbae5233c",
+      "evolucion_diaria.png": "c953134eb61c31af8e22220cab2176bd5c81e44bd240d9bf491223c53888139f",
+      "limpieza.csv": "71c4967b65eb5d9f6cf92f64cc5cab23ac27694a689346762a764953172b4572",
+      "metricas_conjuntas.csv": "e3244765684968f8156b6fcd05cfa64cbe603235abab94eed8a0cfeae2066cee",
+      "metricas_cortes.csv": "a2ee65fdcc780aec14d0e0c74745a80d81b0c668a0c9d9502f65f81965752a07",
+      "metricas_cortes.json": "69384c221e722d3cbd5e01efe7f20da0580355b5b3b2ddcde14631b7bf539173",
+      "metricas_diarias.csv": "7a15ffdcb98e767907fed93763b9ba956326c9b03c81f6a9da86534a1d259a85",
+      "metricas_por_corte.png": "43afa82450b8a95bd8b94f6a8de09588c3691af2aba58d1eddf2a3416008e193",
+      "procedencia_datos.json": "301a93ec0a66d659a3128e8efe33fe8b787d099f5fb9cd8b2b2f4c161e01184e",
+      "pytest.xml": "c3d913ea7f0dacbea803a63a298dec8cbf772ffa3acff6a85ae4a0c6d940dae8",
+      "validacion_temporal.md": "09cb8432801185c30c2283a06c993689c084a341524b745bf165e025dd280256",
+      "versiones.json": "46ab101edf1c56700e4e0e9d9501cfd481628af37330e5b966fd10a041b96774"
+    }
+  },
+  "comprobacion_independiente": {
+    "etiquetas_verificadas": 196000,
+    "rezagos_verificados": 392000,
+    "discrepancias": 0
+  },
+  "fuentes": [
+    {
+      "archivo": "datos_abiertos_2026_08.csv",
+      "sha256_verificado": true,
+      "filas_sin_inicio": 0,
+      "filas_sin_fin": 0
+    },
+    {
+      "archivo": "datos_abiertos_2026_09.csv",
+      "sha256_verificado": true,
+      "filas_sin_inicio": 0,
+      "filas_sin_fin": 0
+    }
+  ],
+  "preprocesamiento": [
+    {
+      "corte": "2026-09-07 00:00:00",
+      "nulos_entrada": 0,
+      "nulos_numericos_antes_imputador": 0,
+      "estaciones_sin_perfil": 0,
+      "perfil_y_estadisticas_solo_train": true,
+      "orden_conservado": true,
+      "categorias_desconocidas_hora": 0,
+      "categorias_desconocidas_dia_semana": 0,
+      "categorias_desconocidas_mes": 0
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "nulos_entrada": 0,
+      "nulos_numericos_antes_imputador": 0,
+      "estaciones_sin_perfil": 0,
+      "perfil_y_estadisticas_solo_train": true,
+      "orden_conservado": true,
+      "categorias_desconocidas_hora": 0,
+      "categorias_desconocidas_dia_semana": 0,
+      "categorias_desconocidas_mes": 0
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "nulos_entrada": 0,
+      "nulos_numericos_antes_imputador": 0,
+      "estaciones_sin_perfil": 0,
+      "perfil_y_estadisticas_solo_train": true,
+      "orden_conservado": true,
+      "categorias_desconocidas_hora": 0,
+      "categorias_desconocidas_dia_semana": 0,
+      "categorias_desconocidas_mes": 0
+    }
+  ],
+  "porcentaje_sse_12_septiembre": 85.94307751532534,
+  "octubre": {
+    "estado": "no_certificable_como_holdout_virgen_del_proyecto",
+    "fase3_utilizo_octubre": false,
+    "historico_categorias_mes_aprendidas": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "categorias_historicas_aprendidas_automaticamente": true,
+    "mes_10_presente_en_fit_historico": true,
+    "nota": "El codificador no registra el año. La categoría 10 demuestra uso de un octubre en fit, pero no permite certificar qué año; el manifiesto incluye octubre de 2026 y falta trazabilidad temporal original para excluirlo.",
+    "accion": "No entrenar ni seleccionar con octubre. Exigir evidencia del periodo del histórico o elegir un periodo completo nunca examinado, con protocolo congelado previamente."
+  },
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "53",
+    "time": "53.225",
+    "timestamp": "2026-11-19T20:18:20.197655-06:00",
+    "hostname": "LAPTOP-U2JRRC2V"
+  },
+  "archivos_evidencia": [
+    "top20_primer_corte.csv",
+    "concentracion_error.csv",
+    "distribuciones.csv",
+    "soporte_variables.csv",
+    "historial_estaciones.csv",
+    "preprocesamiento.csv",
+    "comparacion_baselines.csv",
+    "etapas_caso_extremo.csv",
+    "sensibilidad_diagnostica.csv",
+    "sensibilidad_precision.csv"
+  ],
+  "sha256_fuentes_auditoria": {
+    "mibici_demand\\modeling\\audit_backtest.py": "040c849b185ff3afbd7d2521c6b1371a60eb61aecf40285cbd0efb6e87cc39ab",
+    "mibici_demand\\temporal.py": "dd29f8f46fe5efc4ae8b718f536107449703ac0a40aec48fd4da0b32ae4657b9",
+    "mibici_demand\\modeling\\backtest.py": "57ec1029b5f4cbb6769d70e0a38a78cdabd2589148a6fc016668ca298ab466d2"
+  }
+}

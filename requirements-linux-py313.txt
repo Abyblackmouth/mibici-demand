@@ -1,0 +1,30 @@
+# Runtime Linux/amd64 CPython 3.13.0: cierre transitivo fijado al entorno Windows comprobado.
+# Sin MLflow, notebooks, herramientas de entrenamiento ni paquetes exclusivos de Windows.
+annotated-doc==0.0.7
+annotated-types==0.8.0
+anyio==4.16.0
+click==8.5.1
+cloudpickle==3.1.3
+fastapi==0.165.0
+h11==0.16.0
+idna==3.20
+joblib==1.6.0
+narwhals==2.29.0
+numpy==2.5.5
+opentelemetry-api==1.45.2
+pandas==3.1.1
+# El pickle del perfil conserva objetos Arrow de pandas, aun sin leer parquet al servir.
+pyarrow==26.0.1
+pydantic==2.14.4
+pydantic-core==2.50.5
+python-dateutil==2.9.0.post0
+python-dotenv==1.2.4
+scikit-learn==1.9.1
+scipy==1.18.1
+six==1.17.0
+starlette==1.10.0
+threadpoolctl==3.8.0
+typing-extensions==4.16.0
+typing-inspection==0.4.5
+tzdata==2026.6
+uvicorn==0.54.0

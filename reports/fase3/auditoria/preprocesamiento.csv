@@ -1,0 +1,4 @@
+corte,nulos_entrada,nulos_numericos_antes_imputador,estaciones_sin_perfil,perfil_y_estadisticas_solo_train,orden_conservado,categorias_desconocidas_hora,categorias_desconocidas_dia_semana,categorias_desconocidas_mes
+2026-09-07 00:00:00,0,0,0,True,True,0,0,0
+2026-09-14 00:00:00,0,0,0,True,True,0,0,0
+2026-09-21 00:00:00,0,0,0,True,True,0,0,0

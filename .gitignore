@@ -8,6 +8,10 @@ data/external/*
 !data/*/.gitkeep
 !data/raw/manifest.csv
 
+# Artefacto historico local: no subir el modelo a Git
+/models/best_pipeline.joblib
+/models/fase3/
+
 # Mac OS-specific storage files
 .DS_Store
 
@@ -202,3 +206,25 @@ mlruns/
 mlartifacts/
 mlflow.db
 *.db
+
+# Candidatos, snapshots y paquetes recuperables se distribuyen fuera del Git de fuentes.
+/models/*
+!/models/.gitkeep
+/data/snapshots/
+/artifacts/
+*.joblib
+*.pickle
+*.pkl
+*.parquet
+*.zip
+*.db-wal
+*.db-shm
+/cache/
+*.tmp
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+credentials*.json
+secrets*.json

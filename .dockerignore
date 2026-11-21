@@ -1,0 +1,41 @@
+# Lista cerrada: nada se envia al contexto salvo el runtime y el artefacto indicado.
+**
+!Dockerfile
+!Dockerfile.train
+!.dockerignore
+!requirements-linux-py313.txt
+!mibici_demand/
+mibici_demand/**
+!mibici_demand/__init__.py
+!mibici_demand/api.py
+!mibici_demand/release.py
+!mibici_demand/reproduce.py
+!mibici_demand/config.py
+!mibici_demand/features.py
+!mibici_demand/modeling/
+mibici_demand/modeling/**
+!mibici_demand/modeling/__init__.py
+!mibici_demand/modeling/pipeline.py
+!models/
+models/**
+!models/best_pipeline.joblib
+!models/final/
+models/final/**
+!models/final/pipeline.joblib
+!references/
+references/**
+!references/model_release.json
+!references/data_snapshot.json
+!data/
+data/**
+!data/snapshots/
+data/snapshots/**
+!data/snapshots/fase3-temporal-v1/
+data/snapshots/fase3-temporal-v1/**
+!data/snapshots/fase3-temporal-v1/*.parquet
+!examples/
+examples/**
+!examples/predict_request.json
+!examples/predict_request_final.json
+# No se incluyen .venv, .git, .env, credenciales, CSV/parquet, DB de MLflow,
+# notebooks, reportes/PDF (incluido Soporte_Swagger.pdf), caches ni modelos de cortes.

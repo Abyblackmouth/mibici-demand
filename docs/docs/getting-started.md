@@ -1,6 +1,11 @@
 Primeros pasos
 ==============
 
+> Esta página conserva los comandos históricos de Fases 1/2. Para la entrega
+> integrada con Python 3.13, locks, snapshot, candidato común, Docker y drift,
+> seguir el [README actual](../../README.md). Los comandos históricos de
+> descarga completa no son necesarios para reproducir los tres cortes.
+
 Para dejar el proyecto funcionando desde una instalación limpia (Python 3.10 o superior y unos 8 GB de memoria):
 
 1. Crear y activar el entorno, e instalar las dependencias:

@@ -65,7 +65,11 @@ def sha256_file(path: Path) -> str:
 
 
 def download(
-    desde: str | None = None, hasta: str | None = None, raw_dir: Path = config.RAW_DIR
+    desde: str | None = None,
+    hasta: str | None = None,
+    raw_dir: Path = config.RAW_DIR,
+    *,
+    include_catalog: bool = True,
 ) -> pd.DataFrame:
     """Descarga los archivos que falten y escribe el manifiesto (nombre, url, tamaño, hash).
     Un archivo que ya existe no se vuelve a descargar ni se sobrescribe: data/raw es inmutable."""
@@ -81,7 +85,7 @@ def download(
         )
     selected = [f for f in files if in_window(f.period, desde, hasta)]
     targets = [(f.filename, f.url) for f in selected]
-    if catalog_url:
+    if catalog_url and include_catalog:
         targets.append((Path(catalog_url).name, catalog_url))
 
     for name, url in targets:
@@ -99,7 +103,7 @@ def download(
     return write_manifest(
         raw_dir,
         {f.filename: f.url for f in selected}
-        | ({Path(catalog_url).name: catalog_url} if catalog_url else {}),
+        | ({Path(catalog_url).name: catalog_url} if catalog_url and include_catalog else {}),
     )
 
 

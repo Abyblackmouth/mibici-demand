@@ -1,0 +1,50 @@
+{
+  "estado": "comprobado",
+  "ejecucion": "20261119T195229_3cc516c1",
+  "python": "3.13.0",
+  "pytest": {
+    "tests": "36",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "32.881"
+  },
+  "pip_check": "correcto",
+  "archivos_historicos_conservados": {
+    "models/best_pipeline.joblib": true,
+    "data/raw/manifest.csv": true,
+    "reports/resultados_modelos.csv": true,
+    "reports/resultados_modelos.json": true,
+    "reports/resumen_mlflow_registry.json": true,
+    "tests/test_pipeline.py": true
+  },
+  "hashes_codigo_coinciden": true,
+  "filas_predicciones": 196000,
+  "sin_fuentes_temporales_futuras": true,
+  "metricas_recalculadas_coinciden_csv_y_mlflow": true,
+  "repeticion_con_mismas_metricas": true,
+  "mlflow_padre": "abec722ef1944742a550de4c1ff7a385",
+  "modelos_recargados": [
+    {
+      "corte": "2026-09-07 00:00:00",
+      "run_id": "62196d4e740440e78fe3252757782cb3",
+      "estado_mlflow": "FINISHED",
+      "filas_recargadas_y_comparadas": 65240,
+      "modelo_joblib_y_mlflow_equivalentes": true
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "run_id": "07f1fd438fc74a2fa8a835e6b719e12b",
+      "estado_mlflow": "FINISHED",
+      "filas_recargadas_y_comparadas": 65240,
+      "modelo_joblib_y_mlflow_equivalentes": true
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "run_id": "063ac14e3a8d478c8366d9c72b2ac536",
+      "estado_mlflow": "FINISHED",
+      "filas_recargadas_y_comparadas": 65520,
+      "modelo_joblib_y_mlflow_equivalentes": true
+    }
+  ]
+}
