@@ -1,0 +1,112 @@
+{
+  "fecha": "2026-11-19T20:51:07.152290-06:00",
+  "comando_http_real": [
+    "C:\\Users\\rejos\\OneDrive\\Documentos\\MNA\\MLOps\\Entrega Final\\mibici-demand\\.venv\\Scripts\\python.exe",
+    "-m",
+    "uvicorn",
+    "mibici_demand.api:app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "52082"
+  ],
+  "url_prueba": "http://127.0.0.1:52082",
+  "health_status": 200,
+  "health": {
+    "status": "ready",
+    "service_version": "0.1.0",
+    "model_available": true,
+    "model": {
+      "model_version": "sha256:0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+      "artifact_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+      "uso": "referencia_integracion_no_validado_prospectivamente",
+      "model_feature_columns": [
+        "estacion",
+        "hora",
+        "dia_semana",
+        "mes",
+        "es_fin_semana",
+        "lag_24",
+        "lag_168",
+        "latitud",
+        "longitud",
+        "capacidad"
+      ],
+      "required_observation_fields": [
+        "estacion",
+        "hora_inicio",
+        "lag_24",
+        "lag_168",
+        "latitud",
+        "longitud",
+        "capacidad"
+      ],
+      "input_dtypes": {
+        "estacion": "int16",
+        "hora": "int8",
+        "dia_semana": "int8",
+        "mes": "int8",
+        "es_fin_semana": "int8",
+        "lag_24": "float32",
+        "lag_168": "float32",
+        "latitud": "float64",
+        "longitud": "float64",
+        "capacidad": "float64"
+      },
+      "fitted_imputer_dtype": "float64"
+    },
+    "detail": null
+  },
+  "docs_status": 200,
+  "openapi_status": 200,
+  "predict_status": 200,
+  "invalid_request_status": 422,
+  "solicitud": "examples/predict_request.json",
+  "respuesta": "examples/predict_response.json",
+  "inferencia_directa": [
+    2.6798914860304888,
+    1.6550795827162177,
+    1.1398398001926293
+  ],
+  "inferencia_http": [
+    2.6798914860304888,
+    1.6550795827162177,
+    1.1398398001926293
+  ],
+  "diferencia_absoluta_maxima": 0.0,
+  "tipos_dataframe": {
+    "estacion": "int16",
+    "hora": "int8",
+    "dia_semana": "int8",
+    "mes": "int8",
+    "es_fin_semana": "int8",
+    "lag_24": "float32",
+    "lag_168": "float32",
+    "latitud": "float64",
+    "longitud": "float64",
+    "capacidad": "float64"
+  },
+  "versiones": {
+    "fastapi": "0.165.0",
+    "pydantic": "2.14.4",
+    "uvicorn": "0.54.0",
+    "httpx": "0.28.1",
+    "starlette": "1.10.0",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "joblib": "1.6.0"
+  },
+  "servidor_prueba_detenido": true,
+  "modelo_reentrenado": false,
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "97",
+    "time": "42.285",
+    "timestamp": "2026-11-19T20:50:17.488391-06:00",
+    "hostname": "LAPTOP-U2JRRC2V"
+  }
+}

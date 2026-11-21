@@ -1,0 +1,360 @@
+{
+  "fecha": "2026-11-20T19:02:41.941391-06:00",
+  "estado": "comprobado",
+  "imagen": "mibici-demand:fase3",
+  "image_id": "sha256:2e2764270388e5f444a577b5dc46252d9c2867b4890a5544a7f03b78589a0187",
+  "image_size_bytes": 928314335,
+  "image_os": "linux",
+  "image_architecture": "amd64",
+  "base_image": "python:3.13.0-slim-bookworm@sha256:0de818129b26ed8f46fd772f540c80e277b67a28229531a1ba0fdacfaed19bcb",
+  "docker_run_command": [
+    "docker",
+    "run",
+    "--detach",
+    "--name",
+    "mibici-verificacion-b2d4b627ac79",
+    "--label",
+    "mibici.validation=true",
+    "--read-only",
+    "--publish",
+    "127.0.0.1::8000",
+    "mibici-demand:fase3"
+  ],
+  "windows_run_command": [
+    "C:\\Users\\rejos\\OneDrive\\Documentos\\MNA\\MLOps\\Entrega Final\\mibici-demand\\.venv\\Scripts\\python.exe",
+    "-m",
+    "uvicorn",
+    "mibici_demand.api:app",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "55084"
+  ],
+  "build_command": [
+    "docker",
+    "build",
+    "--platform",
+    "linux/amd64",
+    "--progress",
+    "plain",
+    "--tag",
+    "mibici-demand:fase3",
+    "."
+  ],
+  "model_sha256_windows": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+  "model_sha256_docker": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+  "request_sha256_windows": "e4ffd85033074ab6a6b863be74a2c48cd18b09ba698b422e628abf4a2575d237",
+  "request_sha256_docker": "e4ffd85033074ab6a6b863be74a2c48cd18b09ba698b422e628abf4a2575d237",
+  "predicciones": {
+    "windows_python": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ],
+    "windows_fastapi": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ],
+    "docker_python": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ],
+    "docker_fastapi": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ],
+    "docker_fastapi_interno": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ],
+    "windows_fastapi_evidencia_previa": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ]
+  },
+  "max_abs_difference": {
+    "windows_python": 0.0,
+    "windows_fastapi": 0.0,
+    "docker_python": 0.0,
+    "docker_fastapi": 0.0,
+    "docker_fastapi_interno": 0.0,
+    "windows_fastapi_evidencia_previa": 0.0
+  },
+  "rtol": 1e-12,
+  "atol": 1e-12,
+  "container_mounts": [],
+  "container_health": "healthy",
+  "container_readonly_rootfs": true,
+  "runtime_linux": {
+    "python": "3.13.0",
+    "sys_platform": "linux",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+    "machine": "x86_64",
+    "executable": "/usr/local/bin/python",
+    "prefix": "/usr/local",
+    "base_prefix": "/usr/local",
+    "uid": 10001,
+    "model_path": "/app/models/best_pipeline.joblib",
+    "model_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+    "request_sha256": "e4ffd85033074ab6a6b863be74a2c48cd18b09ba698b422e628abf4a2575d237",
+    "direct_predictions": [
+      2.6798914860304888,
+      1.6550795827162177,
+      1.1398398001926293
+    ],
+    "http_response": {
+      "model": {
+        "model_version": "sha256:0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+        "artifact_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+        "uso": "referencia_integracion_no_validado_prospectivamente",
+        "model_feature_columns": [
+          "estacion",
+          "hora",
+          "dia_semana",
+          "mes",
+          "es_fin_semana",
+          "lag_24",
+          "lag_168",
+          "latitud",
+          "longitud",
+          "capacidad"
+        ],
+        "required_observation_fields": [
+          "estacion",
+          "hora_inicio",
+          "lag_24",
+          "lag_168",
+          "latitud",
+          "longitud",
+          "capacidad"
+        ],
+        "input_dtypes": {
+          "estacion": "int16",
+          "hora": "int8",
+          "dia_semana": "int8",
+          "mes": "int8",
+          "es_fin_semana": "int8",
+          "lag_24": "float32",
+          "lag_168": "float32",
+          "latitud": "float64",
+          "longitud": "float64",
+          "capacidad": "float64"
+        },
+        "fitted_imputer_dtype": "float64"
+      },
+      "horizonte": "24h",
+      "origen_pronostico": "2026-09-12T00:00:00-06:00",
+      "predicciones": [
+        {
+          "estacion": 2,
+          "hora_inicio": "2026-09-12T08:00:00-06:00",
+          "demanda_predicha": 2.6798914860304888,
+          "diagnostico": {
+            "extreme_prediction": false,
+            "reference_capacity": 15.0,
+            "criterion": "prediccion_mayor_que_capacidad",
+            "unknown_station": false
+          }
+        },
+        {
+          "estacion": 46,
+          "hora_inicio": "2026-09-12T21:00:00-06:00",
+          "demanda_predicha": 1.6550795827162177,
+          "diagnostico": {
+            "extreme_prediction": false,
+            "reference_capacity": 15.0,
+            "criterion": "prediccion_mayor_que_capacidad",
+            "unknown_station": false
+          }
+        },
+        {
+          "estacion": 999,
+          "hora_inicio": "2026-09-12T08:00:00-06:00",
+          "demanda_predicha": 1.1398398001926293,
+          "diagnostico": {
+            "extreme_prediction": false,
+            "reference_capacity": 15.0,
+            "criterion": "prediccion_mayor_que_capacidad",
+            "unknown_station": true
+          }
+        }
+      ]
+    },
+    "health_status": 200,
+    "docs_status": 200,
+    "swagger_ui": true,
+    "predict_status": 200,
+    "invalid_status": 422,
+    "health": {
+      "status": "ready",
+      "service_version": "0.1.0",
+      "model_available": true,
+      "model": {
+        "model_version": "sha256:0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+        "artifact_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+        "uso": "referencia_integracion_no_validado_prospectivamente",
+        "model_feature_columns": [
+          "estacion",
+          "hora",
+          "dia_semana",
+          "mes",
+          "es_fin_semana",
+          "lag_24",
+          "lag_168",
+          "latitud",
+          "longitud",
+          "capacidad"
+        ],
+        "required_observation_fields": [
+          "estacion",
+          "hora_inicio",
+          "lag_24",
+          "lag_168",
+          "latitud",
+          "longitud",
+          "capacidad"
+        ],
+        "input_dtypes": {
+          "estacion": "int16",
+          "hora": "int8",
+          "dia_semana": "int8",
+          "mes": "int8",
+          "es_fin_semana": "int8",
+          "lag_24": "float32",
+          "lag_168": "float32",
+          "latitud": "float64",
+          "longitud": "float64",
+          "capacidad": "float64"
+        },
+        "fitted_imputer_dtype": "float64"
+      },
+      "detail": null
+    },
+    "input_dtypes": {
+      "estacion": "int16",
+      "hora": "int8",
+      "dia_semana": "int8",
+      "mes": "int8",
+      "es_fin_semana": "int8",
+      "lag_24": "float32",
+      "lag_168": "float32",
+      "latitud": "float64",
+      "longitud": "float64",
+      "capacidad": "float64"
+    },
+    "versions": {
+      "python-dateutil": "2.9.0.post0",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "scikit-learn": "1.9.1",
+      "pydantic_core": "2.50.5",
+      "pyarrow": "26.0.1",
+      "joblib": "1.6.0",
+      "scipy": "1.18.1",
+      "anyio": "4.16.0",
+      "fastapi": "0.165.0",
+      "idna": "3.20",
+      "cloudpickle": "3.1.3",
+      "numpy": "2.5.5",
+      "h11": "0.16.0",
+      "click": "8.5.1",
+      "pydantic": "2.14.4",
+      "pandas": "3.1.1",
+      "annotated-types": "0.8.0",
+      "threadpoolctl": "3.8.0",
+      "tzdata": "2026.6",
+      "starlette": "1.10.0",
+      "six": "1.17.0",
+      "python-dotenv": "1.2.4",
+      "narwhals": "2.29.0",
+      "opentelemetry-api": "1.45.2",
+      "uvicorn": "0.54.0",
+      "pip": "26.3",
+      "annotated-doc": "0.0.7"
+    },
+    "tzpath": [],
+    "mlflow_installed": false,
+    "application_files_sha256": {
+      "requirements-linux-py313.txt": "107f911b0439620825a17c7fd888edc552ed5f9bd011e72478675eb6d5f659a9",
+      "examples/predict_request.json": "e4ffd85033074ab6a6b863be74a2c48cd18b09ba698b422e628abf4a2575d237",
+      "models/best_pipeline.joblib": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+      "mibici_demand/features.py": "ba303c5848c42f9671b796ae24bbc12e67a068733c17232905806b5cd5e85cdf",
+      "mibici_demand/__init__.py": "a26af178d0d0c50e23b3130fdf3b8f2b3526ed05abf5070f0948c91cea29ab97",
+      "mibici_demand/api.py": "7f8733042b904db6fc55011724a2d519489e2948d1f2794fa5087331ef0e975e",
+      "mibici_demand/config.py": "6b29e66ee40679e06e5ae6bb9fafe3a0d4f055daed48c566f7b506f3e6dd0174",
+      "mibici_demand/modeling/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mibici_demand/modeling/pipeline.py": "d9242615d4d823fa9d615c8797e4034c2e248d4070f24022281885c8ada0d776"
+    },
+    "forbidden_paths_present": []
+  },
+  "runtime_windows": {
+    "python": "3.13.0",
+    "input_dtypes": {
+      "estacion": "int16",
+      "hora": "int8",
+      "dia_semana": "int8",
+      "mes": "int8",
+      "es_fin_semana": "int8",
+      "lag_24": "float32",
+      "lag_168": "float32",
+      "latitud": "float64",
+      "longitud": "float64",
+      "capacidad": "float64"
+    },
+    "versions": {
+      "python-dateutil": "2.9.0.post0",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "scikit-learn": "1.9.1",
+      "pydantic_core": "2.50.5",
+      "pyarrow": "26.0.1",
+      "joblib": "1.6.0",
+      "scipy": "1.18.1",
+      "anyio": "4.16.0",
+      "fastapi": "0.165.0",
+      "idna": "3.20",
+      "cloudpickle": "3.1.3",
+      "numpy": "2.5.5",
+      "h11": "0.16.0",
+      "click": "8.5.1",
+      "pydantic": "2.14.4",
+      "pandas": "3.1.1",
+      "annotated-types": "0.8.0",
+      "threadpoolctl": "3.8.0",
+      "tzdata": "2026.6",
+      "starlette": "1.10.0",
+      "six": "1.17.0",
+      "python-dotenv": "1.2.4",
+      "narwhals": "2.29.0",
+      "opentelemetry-api": "1.45.2",
+      "uvicorn": "0.54.0",
+      "annotated-doc": "0.0.7"
+    }
+  },
+  "build_error_corrected": {
+    "error": "ModuleNotFoundError: No module named pyarrow",
+    "causa": "Índice de columnas ArrowStringArray serializado en el perfil pandas del artefacto.",
+    "solucion": "pyarrow==26.0.1 en el runtime, sin modificar el artefacto."
+  },
+  "reentrenamiento": false,
+  "contenedores_y_servidor_de_prueba_detenidos": true,
+  "pytest": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "107",
+    "time": "54.677",
+    "timestamp": "2026-11-20T19:04:40.221974-06:00",
+    "hostname": "LAPTOP-U2JRRC2V"
+  },
+  "build_exit_code": 0,
+  "docker_run_exit_code": 0,
+  "archivos_previos_conservados": 83,
+  "hashes_previos_sin_cambios": true
+}

@@ -1,0 +1,238 @@
+{
+  "fecha": "2026-11-19T19:08:18.418536-06:00",
+  "conclusion": {
+    "continuar_fase_3_con_python_313": true,
+    "python_311_en_docker_necesario_por_compatibilidad_detectada": false,
+    "motivo": "Instalacion compatible, pip check correcto, 17 pruebas aprobadas y carga/prediccion del artefacto historico correctas con Python 3.13.0 y scikit-learn 1.9.1.",
+    "limite": "Esta comprobacion valida Windows y las rutas actuales del proyecto. No ejecuta todavia un contenedor Linux ni implementa o verifica componentes futuros de Fase 3."
+  },
+  "inspeccion": {
+    "archivos": [
+      "pyproject.toml",
+      "requirements.txt",
+      "Makefile",
+      "README.md",
+      "mibici_demand/**/*.py",
+      "tests/test_pipeline.py",
+      "reports/resumen_mlflow_registry.json"
+    ],
+    "requires_python_declarado": ">=3.10",
+    "dependencias_declaradas_en_pyproject": [],
+    "observaciones": [
+      "El codigo no fija Python 3.11; pyproject.toml permite Python >=3.10.",
+      "requirements.txt no fija versiones, excepto el minimo mlflow>=3.0; por si solo no reproduce el entorno historico.",
+      "joblib se importa directamente y actualmente se instala como dependencia transitiva de scikit-learn/MLflow.",
+      "La variable PYTHON_VERSION=3.10 del Makefile no cambia el interprete; se invoco explicitamente el de .venv.",
+      "No habia modelo local al iniciar la inspeccion; despues el usuario proporciono models/best_pipeline.joblib y se comprobo ese archivo."
+    ]
+  },
+  "entorno": {
+    "python": "3.13.0",
+    "plataforma": "Windows-11-10.0.26200-SP0",
+    "executable": "C:\\Users\\rejos\\OneDrive\\Documentos\\MNA\\MLOps\\Entrega Final\\mibici-demand\\.venv\\Scripts\\python.exe",
+    "prefix": "C:\\Users\\rejos\\OneDrive\\Documentos\\MNA\\MLOps\\Entrega Final\\mibici-demand\\.venv",
+    "base_prefix": "C:\\Users\\rejos\\AppData\\Local\\Programs\\Python\\Python313",
+    "user_site_enabled": false,
+    "include_system_site_packages": false,
+    "versiones_principales": {
+      "numpy": "2.5.5",
+      "pandas": "3.1.1",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "pyarrow": "26.0.1",
+      "mlflow": "3.18.0",
+      "joblib": "1.6.0",
+      "cloudpickle": "3.1.3",
+      "pytest": "9.2.0",
+      "matplotlib": "3.11.2",
+      "seaborn": "0.13.2"
+    },
+    "paquetes_globales": {
+      "unchanged": true,
+      "packages_before": 206,
+      "packages_after": 206,
+      "python": "3.13.0"
+    }
+  },
+  "instalacion": {
+    "comando": ".venv\\Scripts\\python.exe -m pip --isolated --disable-pip-version-check install --no-cache-dir --report .venv/install-report.json -r requirements.txt scikit-learn==1.9.1",
+    "exit_code": 0,
+    "scikit_learn_wheel": "scikit_learn-1.9.1-cp313-cp313-win_amd64.whl",
+    "pip_check": "No broken requirements found.",
+    "instantanea_versiones": "requirements-win-py313.txt",
+    "requirements_original_sin_cambios": true
+  },
+  "pytest": {
+    "exit_code": 0,
+    "tests": 17,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duracion_segundos": 40.41,
+    "working_directory": ".venv/compatibility-check",
+    "comando_desde_working_directory": "..\\Scripts\\python.exe -m pytest ../../tests -q --rootdir ../.. --basetemp t -o cache_dir=cache --junitxml=../../reports/pytest-python313.xml",
+    "evidencia": "reports/pytest-python313.xml",
+    "advertencias_no_bloqueantes": [
+      {
+        "paquete": "MLflow 3.18.0 / SQLAlchemy 2.1.9",
+        "categoria": "SADeprecationWarning",
+        "detalle": "La estrategia noload de SQLAlchemy esta deprecada."
+      },
+      {
+        "paquete": "MLflow 3.18.0",
+        "categoria": "UserWarning",
+        "detalle": "El esquema inferido contiene enteros; futuras entradas con nulos requieren un contrato de tipos adecuado."
+      },
+      {
+        "paquete": "MLflow 3.18.0 / pandas 3.1.1",
+        "categoria": "Pandas4Warning",
+        "detalle": "La comparacion de columnas con range esta deprecada para una futura version de pandas."
+      }
+    ],
+    "aislamiento": "Los ajustes de modelos sinteticos, SQLite y artefactos creados por los tests quedaron dentro de .venv/compatibility-check; no se reentreno ni sustituyo el modelo historico."
+  },
+  "modelo_historico": {
+    "archivo": "models/best_pipeline.joblib",
+    "tamano_bytes": 3646202,
+    "sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+    "versiones_originales_informadas_por_usuario": {
+      "python": "3.11.9",
+      "scikit-learn": "1.9.1"
+    },
+    "referencia_registry_en_reporte": {
+      "name": "mibici-demanda-estacion-hora",
+      "version": "3",
+      "run_id": "476516c68afc43718d4573bd8c39d345",
+      "alias": "champion"
+    },
+    "referencia_registry_comprobada_con_servidor": false,
+    "referencia_registry_nota": "Los metadatos del JSON son una referencia; la comprobacion se realizo sobre el archivo local proporcionado, sin acceso a un registry historico.",
+    "inferencia": {
+      "status": "passed",
+      "historical_model": "models/best_pipeline.joblib",
+      "estimator": "HistGradientBoostingRegressor",
+      "horizon": "24h",
+      "input_kind": "synthetic smoke sample; lag and station metadata use saved training medians; no accuracy evaluation",
+      "feature_columns": [
+        "estacion",
+        "hora",
+        "dia_semana",
+        "mes",
+        "es_fin_semana",
+        "lag_24",
+        "lag_168",
+        "latitud",
+        "longitud",
+        "capacidad"
+      ],
+      "dtypes": {
+        "estacion": "int16",
+        "hora": "int8",
+        "dia_semana": "int8",
+        "mes": "int8",
+        "es_fin_semana": "int8",
+        "lag_24": "float32",
+        "lag_168": "float32",
+        "latitud": "float64",
+        "longitud": "float64",
+        "capacidad": "float64"
+      },
+      "fitted_preprocessor_columns": [
+        "estacion",
+        "hora",
+        "dia_semana",
+        "mes",
+        "es_fin_semana",
+        "lag_24",
+        "lag_168",
+        "latitud",
+        "longitud",
+        "capacidad",
+        "est_demanda_media",
+        "est_prop_hora_pico",
+        "pc1",
+        "pc2",
+        "pc3"
+      ],
+      "raw_predictions": [
+        3.8999413261590536,
+        3.0519361001759044,
+        2.0444183079498015
+      ],
+      "predictions": [
+        {
+          "estacion": 2,
+          "hora_inicio": "2026-09-21T08:00:00.000",
+          "hora": 8,
+          "dia_semana": 0,
+          "mes": 9,
+          "es_fin_semana": 0,
+          "lag_24": 1.0,
+          "lag_168": 1.0,
+          "latitud": 20.6744,
+          "longitud": -103.362224,
+          "capacidad": 15.0,
+          "demanda_predicha": 3.8999414444,
+          "presion_redistribucion": 0.2599960864
+        },
+        {
+          "estacion": 3,
+          "hora_inicio": "2026-09-21T08:00:00.000",
+          "hora": 8,
+          "dia_semana": 0,
+          "mes": 9,
+          "es_fin_semana": 0,
+          "lag_24": 1.0,
+          "lag_168": 1.0,
+          "latitud": 20.6744,
+          "longitud": -103.362224,
+          "capacidad": 15.0,
+          "demanda_predicha": 3.0519361496,
+          "presion_redistribucion": 0.203462407
+        },
+        {
+          "estacion": 999,
+          "hora_inicio": "2026-09-21T08:00:00.000",
+          "hora": 8,
+          "dia_semana": 0,
+          "mes": 9,
+          "es_fin_semana": 0,
+          "lag_24": 1.0,
+          "lag_168": 1.0,
+          "latitud": 20.6744,
+          "longitud": -103.362224,
+          "capacidad": 15.0,
+          "demanda_predicha": 2.044418335,
+          "presion_redistribucion": 0.1362945586
+        }
+      ],
+      "unknown_station_tested": true,
+      "finite_nonnegative": true,
+      "warnings": []
+    },
+    "reentrenado": false,
+    "subido_a_github": false,
+    "proteccion_gitignore": "/models/best_pipeline.joblib",
+    "evaluacion_precision_o_equivalencia_numerica_con_python_311": false
+  },
+  "incompatibilidades_detectadas": [],
+  "solucion_de_menor_impacto": [
+    "Mantener Python 3.13 en .venv y scikit-learn==1.9.1 para este artefacto.",
+    "Usar la instantanea requirements-win-py313.txt para reproducir este entorno de Windows, sin cambiar los requirements originales.",
+    "Al implementar Docker, verificar de nuevo carga e inferencia con Python 3.13 y las mismas versiones de las dependencias de inferencia; la instantanea Windows incluye paquetes exclusivos de Windows.",
+    "Python 3.11.9 en un contenedor separado solo seria necesario si una comprobacion posterior demuestra un fallo concreto o se exige reproducir exactamente el entorno original."
+  ],
+  "fuentes_tecnicas": [
+    "https://pypi.org/project/scikit-learn/1.9.1/",
+    "https://scikit-learn.org/stable/model_persistence.html"
+  ],
+  "verificacion_final": {
+    "archivos_versionados_modificados": [
+      ".gitignore"
+    ],
+    "codigo_y_pruebas_originales_sin_cambios": true,
+    "pyproject_y_requirements_originales_sin_cambios": true,
+    "modelo_conserva_sha256": true,
+    "versiones_fijadas_verificadas_con_entorno": 185
+  }
+}

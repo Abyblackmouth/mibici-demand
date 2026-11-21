@@ -1,0 +1,103 @@
+{
+  "estado": "reproducido",
+  "python": "3.13.0",
+  "plataforma": "Windows-11-10.0.26200-SP0",
+  "prefix": "C:\\Users\\rejos\\OneDrive\\Documentos\\MNA\\MLOps\\Entrega Final\\mibici-demand\\.venv\\repro-clean",
+  "base_prefix": "C:\\Users\\rejos\\AppData\\Local\\Programs\\Python\\Python313",
+  "executable": "C:\\Users\\rejos\\OneDrive\\Documentos\\MNA\\MLOps\\Entrega Final\\mibici-demand\\.venv\\repro-clean\\Scripts\\python.exe",
+  "snapshot_sha256": "9df4c79b355a4ff783c3b6e5426eae5f3aa15142c5b49d0f9295fd770adbfd2a",
+  "cortes": [
+    {
+      "corte": "2026-09-07 00:00:00",
+      "filas_train": 251480,
+      "filas_evaluacion": 65240,
+      "metricas": {
+        "mae": 1.012858058741473,
+        "rmse": 3.8941509281265407,
+        "wape": 0.6785531181562682,
+        "r2": -1.3431394779695012
+      },
+      "referencia": {
+        "mae": 1.012858058741473,
+        "rmse": 3.8941509281265407,
+        "wape": 0.6785531181562682,
+        "r2": -1.3431394779695012
+      },
+      "metricas_en_tolerancia": true,
+      "diferencia_maxima_predicciones": 0.0,
+      "diferencias_metricas": {
+        "mae": 0.0,
+        "rmse": 0.0,
+        "wape": 0.0,
+        "r2": 0.0
+      },
+      "modelo_reentrenado_sha256": "356a20f59e4b72202faf5a40986e0282aadcc05840f070a367527c74a47513a0"
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "filas_train": 260440,
+      "filas_evaluacion": 65240,
+      "metricas": {
+        "mae": 1.0843300724233618,
+        "rmse": 1.9050636120161484,
+        "wape": 0.6337896012695209,
+        "r2": 0.5428547385590422
+      },
+      "referencia": {
+        "mae": 1.0843300724233618,
+        "rmse": 1.9050636120161484,
+        "wape": 0.6337896012695209,
+        "r2": 0.5428547385590422
+      },
+      "metricas_en_tolerancia": true,
+      "diferencia_maxima_predicciones": 0.0,
+      "diferencias_metricas": {
+        "mae": 0.0,
+        "rmse": 0.0,
+        "wape": 0.0,
+        "r2": 0.0
+      },
+      "modelo_reentrenado_sha256": "6f8ffc5572458864871861671afdf4c7c53e3ad66b015f5eace6177a72fe080f"
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "filas_train": 261020,
+      "filas_evaluacion": 65520,
+      "metricas": {
+        "mae": 1.0787979639884653,
+        "rmse": 1.8094035974657825,
+        "wape": 0.5615409388870072,
+        "r2": 0.6491698071982843
+      },
+      "referencia": {
+        "mae": 1.0787979639884653,
+        "rmse": 1.8094035974657825,
+        "wape": 0.5615409388870072,
+        "r2": 0.6491698071982843
+      },
+      "metricas_en_tolerancia": true,
+      "diferencia_maxima_predicciones": 0.0,
+      "diferencias_metricas": {
+        "mae": 0.0,
+        "rmse": 0.0,
+        "wape": 0.0,
+        "r2": 0.0
+      },
+      "modelo_reentrenado_sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372"
+    }
+  ],
+  "tolerancias": {
+    "metricas_atol": 1e-06,
+    "metricas_rtol": 1e-06
+  },
+  "promocion_ejecutada": false,
+  "versiones": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "pyarrow": "26.0.1",
+    "threadpoolctl": "3.8.0"
+  }
+}

@@ -10,11 +10,16 @@ pip
 pytest
 python-dotenv
 ruff
-scikit-learn
+scikit-learn==1.9.1
 tqdm
 typer
 pyarrow
 seaborn
 requests
 mlflow>=3.0
+# Servicio HTTP y pruebas de integracion (versiones comprobadas en .venv)
+fastapi==0.165.0
+pydantic==2.14.4
+uvicorn==0.54.0
+httpx==0.28.1
 -e .

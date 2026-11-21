@@ -1,0 +1,81 @@
+{
+  "version": "mibici-fase3-v1",
+  "archive": "mibici-fase3-v1.zip",
+  "sha256": "755b11dcec416efb6f5666af2e0406e8c67db31f9cadb1ef837481d161e2585b",
+  "bytes": 16793052,
+  "download_url": null,
+  "publication_status": "preparado_local_no_publicado",
+  "files": [
+    {
+      "path": "data/processed/fase3/demanda_horaria.parquet",
+      "sha256": "62fb78c7d7e5448fa6eeeebc233b97a771c4e458813c279cacc437048489ebda",
+      "bytes": 566672
+    },
+    {
+      "path": "data/processed/fase3/predicciones_backtest.parquet",
+      "sha256": "edf1ae0ba81b9badcc3dfa8c77f0f119dd0c981de6a12388d1d41e04b3d41090",
+      "bytes": 2450558
+    },
+    {
+      "path": "data/processed/fase3/viajes_limpios.parquet",
+      "sha256": "653f66b4098dcaf6e181cb9b7db8a82cb27d0bcc37a43e6f879de5a2b7774834",
+      "bytes": 11008745
+    },
+    {
+      "path": "data/snapshots/fase3-temporal-v1/20260907_evaluation.parquet",
+      "sha256": "24da50fc19b1712928cd9c55784e2b4d284fe842cd908512a16670b0483ecf79",
+      "bytes": 766472
+    },
+    {
+      "path": "data/snapshots/fase3-temporal-v1/20260907_train.parquet",
+      "sha256": "1568a1bf284886b81174183f7a4734a4b80a2d98d5af833f3b8e4a6ad82b8e35",
+      "bytes": 530653
+    },
+    {
+      "path": "data/snapshots/fase3-temporal-v1/20260914_evaluation.parquet",
+      "sha256": "8fe145b4b74a3503e904fb2b249ee186327221dc0d89631d14c11eb12faea6e6",
+      "bytes": 780712
+    },
+    {
+      "path": "data/snapshots/fase3-temporal-v1/20260914_train.parquet",
+      "sha256": "a078866b16895502d916b0a8be22b8532284e5cdeb74fb4a512ba49dae2ea325",
+      "bytes": 545587
+    },
+    {
+      "path": "data/snapshots/fase3-temporal-v1/20260921_evaluation.parquet",
+      "sha256": "4cede9f572dda9f4f8f6fa632b0496e40be5c4bb5b384ef3ab9225159816189a",
+      "bytes": 792966
+    },
+    {
+      "path": "data/snapshots/fase3-temporal-v1/20260921_train.parquet",
+      "sha256": "0af13ad96a6ff5ab72f2b03a5e784b9fbcbbd3b470881da364c37b6e0972af1a",
+      "bytes": 556409
+    },
+    {
+      "path": "models/best_pipeline.joblib",
+      "sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+      "bytes": 3646202
+    },
+    {
+      "path": "models/fase3/20261119T195229_3cc516c1/pipeline_20260907.joblib",
+      "sha256": "356a20f59e4b72202faf5a40986e0282aadcc05840f070a367527c74a47513a0",
+      "bytes": 412034
+    },
+    {
+      "path": "models/fase3/20261119T195229_3cc516c1/pipeline_20260914.joblib",
+      "sha256": "6f8ffc5572458864871861671afdf4c7c53e3ad66b015f5eace6177a72fe080f",
+      "bytes": 412146
+    },
+    {
+      "path": "models/fase3/20261119T195229_3cc516c1/pipeline_20260921.joblib",
+      "sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "bytes": 412322
+    },
+    {
+      "path": "models/final/pipeline.joblib",
+      "sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "bytes": 412322
+    }
+  ],
+  "raw_sources": "data/raw/manifest.csv; solo agosto y septiembre necesarios para reconstruir desde crudo"
+}

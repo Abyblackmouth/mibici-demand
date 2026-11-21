@@ -1,0 +1,103 @@
+{
+  "estado": "reproducido",
+  "python": "3.13.0",
+  "plataforma": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+  "prefix": "/usr/local",
+  "base_prefix": "/usr/local",
+  "executable": "/usr/local/bin/python",
+  "snapshot_sha256": "9df4c79b355a4ff783c3b6e5426eae5f3aa15142c5b49d0f9295fd770adbfd2a",
+  "cortes": [
+    {
+      "corte": "2026-09-07 00:00:00",
+      "filas_train": 251480,
+      "filas_evaluacion": 65240,
+      "metricas": {
+        "mae": 1.012858058741473,
+        "rmse": 3.8941509281265407,
+        "wape": 0.6785531181562682,
+        "r2": -1.3431394779695012
+      },
+      "referencia": {
+        "mae": 1.012858058741473,
+        "rmse": 3.8941509281265407,
+        "wape": 0.6785531181562682,
+        "r2": -1.3431394779695012
+      },
+      "metricas_en_tolerancia": true,
+      "diferencia_maxima_predicciones": 3.552713678800501e-15,
+      "diferencias_metricas": {
+        "mae": 0.0,
+        "rmse": 0.0,
+        "wape": 0.0,
+        "r2": 0.0
+      },
+      "modelo_reentrenado_sha256": "4f4520164120c709856b13bdbc1a5e3a8812c66beec01b732d7f2c5a92288ad8"
+    },
+    {
+      "corte": "2026-09-14 00:00:00",
+      "filas_train": 260440,
+      "filas_evaluacion": 65240,
+      "metricas": {
+        "mae": 1.0843300724233618,
+        "rmse": 1.9050636120161484,
+        "wape": 0.6337896012695209,
+        "r2": 0.5428547385590422
+      },
+      "referencia": {
+        "mae": 1.0843300724233618,
+        "rmse": 1.9050636120161484,
+        "wape": 0.6337896012695209,
+        "r2": 0.5428547385590422
+      },
+      "metricas_en_tolerancia": true,
+      "diferencia_maxima_predicciones": 1.7763568394002505e-15,
+      "diferencias_metricas": {
+        "mae": 0.0,
+        "rmse": 0.0,
+        "wape": 0.0,
+        "r2": 0.0
+      },
+      "modelo_reentrenado_sha256": "73b9d7d020c7aab58496379d88da5a59427c18e00b1e47711500ec60a5ff5f92"
+    },
+    {
+      "corte": "2026-09-21 00:00:00",
+      "filas_train": 261020,
+      "filas_evaluacion": 65520,
+      "metricas": {
+        "mae": 1.0787979639884653,
+        "rmse": 1.8094035974657825,
+        "wape": 0.5615409388870072,
+        "r2": 0.6491698071982843
+      },
+      "referencia": {
+        "mae": 1.0787979639884653,
+        "rmse": 1.8094035974657825,
+        "wape": 0.5615409388870072,
+        "r2": 0.6491698071982843
+      },
+      "metricas_en_tolerancia": true,
+      "diferencia_maxima_predicciones": 3.552713678800501e-15,
+      "diferencias_metricas": {
+        "mae": 0.0,
+        "rmse": 0.0,
+        "wape": 0.0,
+        "r2": 0.0
+      },
+      "modelo_reentrenado_sha256": "5add1e6f0d40c4af210c8b0b06affaafbf9845058369cad0c6d56e3ca603f408"
+    }
+  ],
+  "tolerancias": {
+    "metricas_atol": 1e-06,
+    "metricas_rtol": 1e-06
+  },
+  "promocion_ejecutada": false,
+  "versiones": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "joblib": "1.6.0",
+    "pyarrow": "26.0.1",
+    "threadpoolctl": "3.8.0"
+  }
+}

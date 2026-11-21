@@ -1,0 +1,251 @@
+{
+  "estado": "verificado",
+  "release": {
+    "release_id": "mibici-temporal-20260921-v1",
+    "model_path": "models/final/pipeline.joblib",
+    "sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+    "source_model": "models/fase3/20261119T195229_3cc516c1/pipeline_20260921.joblib",
+    "source_mlflow_run_id": "063ac14e3a8d478c8366d9c72b2ac536",
+    "source_mlflow_model_uri": "models:/m-853d6fac8e674e11bb0f83ea1113f021",
+    "corte": "2026-09-21 00:00:00",
+    "train_inicio": "2026-08-23 00:00:00",
+    "train_fin_exclusivo": "2026-09-20 00:00:00",
+    "uso": "candidato_temporal_integracion_no_aprobado_produccion",
+    "produccion_aprobada": false,
+    "seleccion": "Ultimo corte causal por cronologia; no argmin de metricas de evaluacion",
+    "criterios": {
+      "trazabilidad_causal": true,
+      "sin_octubre": true,
+      "robustez_familia_acreditada": false,
+      "motivo_no_aprobacion": "Primer corte: extremo 438.0117 y RMSE peor que baselines; no hay holdout nuevo certificado"
+    },
+    "input_dtypes": {
+      "estacion": "int64",
+      "hora": "int8",
+      "dia_semana": "int8",
+      "mes": "int8",
+      "es_fin_semana": "int8",
+      "lag_24": "float32",
+      "lag_168": "float32"
+    },
+    "snapshot_manifest": "references/data_snapshot.json",
+    "snapshot_manifest_sha256": "9df4c79b355a4ff783c3b6e5426eae5f3aa15142c5b49d0f9295fd770adbfd2a",
+    "historico_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2"
+  },
+  "image_id": "sha256:254752e18ea1c5145fdc78ca21dfa6e99a7b7db21e582f4334761820301db74f",
+  "image": "mibici-demand:fase3",
+  "docker_run": [
+    "docker",
+    "run",
+    "--detach",
+    "--name",
+    "mibici-verificacion-c953dd13c182",
+    "--label",
+    "mibici.validation=true",
+    "--read-only",
+    "--publish",
+    "127.0.0.1::8000",
+    "mibici-demand:fase3"
+  ],
+  "status": [
+    {
+      "health": 200,
+      "docs": 200,
+      "predict": 200,
+      "invalid": 422
+    },
+    {
+      "health": 200,
+      "docs": 200,
+      "predict": 200,
+      "invalid": 422
+    }
+  ],
+  "python_windows": [
+    2.728705012827481,
+    20.720247569805895,
+    1.0691387843421751
+  ],
+  "windows_api": {
+    "model": {
+      "model_version": "sha256:e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "artifact_sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "uso": "candidato_temporal_integracion_no_aprobado_produccion",
+      "release_id": "mibici-temporal-20260921-v1",
+      "forecast_origin_min": "2026-09-21T00:00:00-06:00",
+      "model_feature_columns": [
+        "estacion",
+        "hora",
+        "dia_semana",
+        "mes",
+        "es_fin_semana",
+        "lag_24",
+        "lag_168"
+      ],
+      "required_observation_fields": [
+        "estacion",
+        "hora_inicio",
+        "lag_24",
+        "lag_168"
+      ],
+      "input_dtypes": {
+        "estacion": "int64",
+        "hora": "int8",
+        "dia_semana": "int8",
+        "mes": "int8",
+        "es_fin_semana": "int8",
+        "lag_24": "float32",
+        "lag_168": "float32"
+      },
+      "fitted_imputer_dtype": "float32"
+    },
+    "horizonte": "24h",
+    "origen_pronostico": "2026-09-26T00:00:00-06:00",
+    "predicciones": [
+      {
+        "estacion": 2,
+        "hora_inicio": "2026-09-26T08:00:00-06:00",
+        "demanda_predicha": 2.728705012827481,
+        "diagnostico": {
+          "extreme_prediction": null,
+          "reference_capacity": null,
+          "criterion": "sin_referencia_de_capacidad",
+          "unknown_station": false
+        }
+      },
+      {
+        "estacion": 46,
+        "hora_inicio": "2026-09-26T21:00:00-06:00",
+        "demanda_predicha": 20.720247569805895,
+        "diagnostico": {
+          "extreme_prediction": null,
+          "reference_capacity": null,
+          "criterion": "sin_referencia_de_capacidad",
+          "unknown_station": false
+        }
+      },
+      {
+        "estacion": 999,
+        "hora_inicio": "2026-09-26T08:00:00-06:00",
+        "demanda_predicha": 1.0691387843421751,
+        "diagnostico": {
+          "extreme_prediction": null,
+          "reference_capacity": null,
+          "criterion": "sin_referencia_de_capacidad",
+          "unknown_station": true
+        }
+      }
+    ]
+  },
+  "docker_api": {
+    "model": {
+      "model_version": "sha256:e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "artifact_sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "uso": "candidato_temporal_integracion_no_aprobado_produccion",
+      "release_id": "mibici-temporal-20260921-v1",
+      "forecast_origin_min": "2026-09-21T00:00:00-06:00",
+      "model_feature_columns": [
+        "estacion",
+        "hora",
+        "dia_semana",
+        "mes",
+        "es_fin_semana",
+        "lag_24",
+        "lag_168"
+      ],
+      "required_observation_fields": [
+        "estacion",
+        "hora_inicio",
+        "lag_24",
+        "lag_168"
+      ],
+      "input_dtypes": {
+        "estacion": "int64",
+        "hora": "int8",
+        "dia_semana": "int8",
+        "mes": "int8",
+        "es_fin_semana": "int8",
+        "lag_24": "float32",
+        "lag_168": "float32"
+      },
+      "fitted_imputer_dtype": "float32"
+    },
+    "horizonte": "24h",
+    "origen_pronostico": "2026-09-26T00:00:00-06:00",
+    "predicciones": [
+      {
+        "estacion": 2,
+        "hora_inicio": "2026-09-26T08:00:00-06:00",
+        "demanda_predicha": 2.728705012827481,
+        "diagnostico": {
+          "extreme_prediction": null,
+          "reference_capacity": null,
+          "criterion": "sin_referencia_de_capacidad",
+          "unknown_station": false
+        }
+      },
+      {
+        "estacion": 46,
+        "hora_inicio": "2026-09-26T21:00:00-06:00",
+        "demanda_predicha": 20.720247569805895,
+        "diagnostico": {
+          "extreme_prediction": null,
+          "reference_capacity": null,
+          "criterion": "sin_referencia_de_capacidad",
+          "unknown_station": false
+        }
+      },
+      {
+        "estacion": 999,
+        "hora_inicio": "2026-09-26T08:00:00-06:00",
+        "demanda_predicha": 1.0691387843421751,
+        "diagnostico": {
+          "extreme_prediction": null,
+          "reference_capacity": null,
+          "criterion": "sin_referencia_de_capacidad",
+          "unknown_station": true
+        }
+      }
+    ]
+  },
+  "docker_native": {
+    "predictions": [
+      2.728705012827481,
+      20.720247569805895,
+      1.0691387843421751
+    ],
+    "sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+    "model_path": "/app/models/pipeline.joblib",
+    "dtypes": {
+      "estacion": "int64",
+      "hora": "int8",
+      "dia_semana": "int8",
+      "mes": "int8",
+      "es_fin_semana": "int8",
+      "lag_24": "float32",
+      "lag_168": "float32"
+    },
+    "prefix": "/usr/local",
+    "base_prefix": "/usr/local",
+    "uid": 10001,
+    "mlflow_installed": false,
+    "forbidden": [],
+    "files": {
+      "requirements-linux-py313.txt": "107f911b0439620825a17c7fd888edc552ed5f9bd011e72478675eb6d5f659a9",
+      "examples/predict_request.json": "e4ffd85033074ab6a6b863be74a2c48cd18b09ba698b422e628abf4a2575d237",
+      "examples/predict_request_final.json": "4e716aac3d9efae70cdb1a9d8695d3f6ce1c51f1846ab9abb6d0047a5a67f79d",
+      "references/model_release.json": "b89cd1ed13a52821789fbda00c93e46461681bfd5d5a6f434d0c8d051c2b8969",
+      "models/pipeline.joblib": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+      "mibici_demand/features.py": "ba303c5848c42f9671b796ae24bbc12e67a068733c17232905806b5cd5e85cdf",
+      "mibici_demand/__init__.py": "a26af178d0d0c50e23b3130fdf3b8f2b3526ed05abf5070f0948c91cea29ab97",
+      "mibici_demand/api.py": "d5871a2e70d326c915fdedddea3ad3986a1ad2811e51558698ac8bafb7a6d137",
+      "mibici_demand/release.py": "a73adbdca2273d5d7f7ad65254a2810183ac3ad95efa4f5d29374e4d0f3fefc2",
+      "mibici_demand/config.py": "6b29e66ee40679e06e5ae6bb9fafe3a0d4f055daed48c566f7b506f3e6dd0174",
+      "mibici_demand/modeling/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mibici_demand/modeling/pipeline.py": "d9242615d4d823fa9d615c8797e4034c2e248d4070f24022281885c8ada0d776"
+    }
+  },
+  "diferencia_maxima_windows_api": 0.0,
+  "diferencia_maxima_docker_api": 0.0,
+  "diferencia_maxima_docker_native": 0.0
+}

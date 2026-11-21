@@ -1,0 +1,17 @@
+{
+  "estado": "no_certificable_como_holdout_virgen_del_proyecto",
+  "fase3_utilizo_octubre": false,
+  "historico_categorias_mes_aprendidas": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "categorias_historicas_aprendidas_automaticamente": true,
+  "mes_10_presente_en_fit_historico": true,
+  "nota": "El codificador no registra el año. La categoría 10 demuestra uso de un octubre en fit, pero no permite certificar qué año; el manifiesto incluye octubre de 2026 y falta trazabilidad temporal original para excluirlo.",
+  "accion": "No entrenar ni seleccionar con octubre. Exigir evidencia del periodo del histórico o elegir un periodo completo nunca examinado, con protocolo congelado previamente."
+}

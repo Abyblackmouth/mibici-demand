@@ -1,0 +1,9 @@
+FROM python:3.13.0-slim-bookworm@sha256:0de818129b26ed8f46fd772f540c80e277b67a28229531a1ba0fdacfaed19bcb
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 PYTHONTZPATH="" TZ=America/Mexico_City
+WORKDIR /app
+COPY requirements-linux-py313.txt ./
+RUN python -m pip install pip==26.3 && python -m pip install --only-binary=:all: --no-deps -r requirements-linux-py313.txt && python -m pip check
+COPY mibici_demand/ ./mibici_demand/
+COPY references/data_snapshot.json ./references/data_snapshot.json
+COPY data/snapshots/fase3-temporal-v1/ ./data/snapshots/fase3-temporal-v1/
+CMD ["python", "-m", "mibici_demand.reproduce", "--output", "/tmp/reproduction"]

@@ -1,0 +1,7 @@
+tipo,metrica,vigilancia,alerta_absoluta,alerta_relativa,accion
+distribucion,psi,0.1,0.25,,Investigar calendario/composicion y monitorizar; no inferir degradacion
+calidad,fraccion_faltantes_lag,0.01,0.05,,"Corregir captura, disponibilidad y rezagos"
+desempeno,mae,,0.05,0.1,Exigir ambos umbrales; revisar modelo tras descartar problemas de datos
+desempeno,rmse,,0.1,0.1,Exigir ambos umbrales; revisar modelo tras descartar problemas de datos
+desempeno,wape,,0.02,0.1,Exigir ambos umbrales; revisar modelo tras descartar problemas de datos
+desempeno,caida_r2,,0.1,,Investigar junto con errores y varianza de demanda

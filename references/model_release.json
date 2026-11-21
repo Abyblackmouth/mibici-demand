@@ -1,0 +1,32 @@
+{
+  "release_id": "mibici-temporal-20260921-v1",
+  "model_path": "models/final/pipeline.joblib",
+  "sha256": "e355fb092ca5c6d3f8498369001a803c9afc399b82bdd379ee61b902809af372",
+  "source_model": "models/fase3/20261119T195229_3cc516c1/pipeline_20260921.joblib",
+  "source_mlflow_run_id": "063ac14e3a8d478c8366d9c72b2ac536",
+  "source_mlflow_model_uri": "models:/m-853d6fac8e674e11bb0f83ea1113f021",
+  "corte": "2026-09-21 00:00:00",
+  "train_inicio": "2026-08-23 00:00:00",
+  "train_fin_exclusivo": "2026-09-20 00:00:00",
+  "uso": "candidato_temporal_integracion_no_aprobado_produccion",
+  "produccion_aprobada": false,
+  "seleccion": "Ultimo corte causal por cronologia; no argmin de metricas de evaluacion",
+  "criterios": {
+    "trazabilidad_causal": true,
+    "sin_octubre": true,
+    "robustez_familia_acreditada": false,
+    "motivo_no_aprobacion": "Primer corte: extremo 438.0117 y RMSE peor que baselines; no hay holdout nuevo certificado"
+  },
+  "input_dtypes": {
+    "estacion": "int64",
+    "hora": "int8",
+    "dia_semana": "int8",
+    "mes": "int8",
+    "es_fin_semana": "int8",
+    "lag_24": "float32",
+    "lag_168": "float32"
+  },
+  "snapshot_manifest": "references/data_snapshot.json",
+  "snapshot_manifest_sha256": "9df4c79b355a4ff783c3b6e5426eae5f3aa15142c5b49d0f9295fd770adbfd2a",
+  "historico_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2"
+}

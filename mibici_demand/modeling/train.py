@@ -280,6 +280,25 @@ def _strip_model_prefix(best_params: dict[str, Any]) -> dict[str, Any]:
     return {k.removeprefix(prefix): v for k, v in best_params.items()}
 
 
+def timestamp_cv_splits(timestamps: pd.Series, n_splits: int, gap_hours: int = 24):
+    """CV por horas completas, purgando etiquetas; no divide estaciones de una hora.
+
+    Corrige el TimeSeriesSplit por filas del tuning legado. No reescribe las
+    métricas históricas ni certifica la disponibilidad causal de su tabla Fase 2.
+    """
+    times = pd.to_datetime(timestamps).reset_index(drop=True)
+    unique = pd.DatetimeIndex(times.unique()).sort_values()
+    splits = []
+    for _, valid_hours in TimeSeriesSplit(n_splits=n_splits).split(unique):
+        start, end = unique[valid_hours[0]], unique[valid_hours[-1]]
+        train = np.flatnonzero((times < start - pd.Timedelta(hours=gap_hours)).to_numpy())
+        valid = np.flatnonzero(times.between(start, end).to_numpy())
+        if not len(train) or not len(valid):
+            raise ValueError("Historia insuficiente para CV por timestamps y purga de 24 h.")
+        splits.append((train, valid))
+    return splits
+
+
 def _total_combinations(param_grid: dict[str, list[Any]]) -> int:
     total = 1
     for values in param_grid.values():
@@ -402,7 +421,7 @@ def tune_and_evaluate(
     best_model_test_metrics: dict[str, float] = {}
     model_artifacts_data: list[dict[str, Any]] = []
 
-    tscv = TimeSeriesSplit(n_splits=cv_splits)
+    tscv = timestamp_cv_splits(tune_df["hora_inicio"], n_splits=cv_splits)
 
     for model_name in models:
         t0 = time.perf_counter()

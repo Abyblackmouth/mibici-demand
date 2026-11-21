@@ -1,0 +1,41 @@
+escenario,tipo,nivel,variable,comparacion,valor,referencia,delta,accion
+control,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_10,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_30,distribucion,vigilancia,hora,historica,0.1863698162151477,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_30,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_30,distribucion,vigilancia,en_pico,historica,0.18632210283650175,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_30,distribucion,vigilancia,hora,control,0.1863698162151477,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_30,distribucion,vigilancia,en_pico,control,0.18632210283650175,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_50,distribucion,alerta,hora,historica,0.5132923909306615,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_50,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_50,distribucion,alerta,en_pico,historica,0.5132153062292546,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_50,distribucion,alerta,hora,control,0.5132923909306615,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+composicion_50,distribucion,alerta,en_pico,control,0.5132153062292546,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+faltantes_10,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+faltantes_10,calidad,alerta,lag_24,historica,0.1,0.0,0.1,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+faltantes_10,calidad,alerta,lag_168,historica,0.1,0.0,0.1,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+faltantes_30,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+faltantes_30,calidad,alerta,lag_24,historica,0.3,0.0,0.3,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+faltantes_30,calidad,alerta,lag_168,historica,0.3,0.0,0.3,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+faltantes_50,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+faltantes_50,calidad,alerta,lag_24,historica,0.5,0.0,0.5,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+faltantes_50,calidad,alerta,lag_168,historica,0.5,0.0,0.5,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_10,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_10,calidad,alerta,lag_24,historica,0.1,0.0,0.1,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_10,calidad,alerta,lag_168,historica,0.1,0.0,0.1,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_30,desempeno,alerta,mae,control,1.1231493415947174,1.012858058741473,0.1102912828532443,"Revisar errores y cohortes; corregir datos si procede; evaluar reentrenamiento en validacion temporal futura, sin ejecutarlo."
+combinado_30,distribucion,vigilancia,hora,historica,0.1863698162151477,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_30,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_30,distribucion,vigilancia,en_pico,historica,0.18632210283650175,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_30,calidad,alerta,lag_24,historica,0.3,0.0,0.3,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_30,calidad,alerta,lag_168,historica,0.3,0.0,0.3,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_30,distribucion,vigilancia,hora,control,0.1863698162151477,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_30,distribucion,vigilancia,en_pico,control,0.18632210283650175,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_50,desempeno,alerta,mae,control,1.211363137275016,1.012858058741473,0.19850507853354293,"Revisar errores y cohortes; corregir datos si procede; evaluar reentrenamiento en validacion temporal futura, sin ejecutarlo."
+combinado_50,distribucion,alerta,hora,historica,0.5132923909306615,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_50,distribucion,alerta,mes,historica,12.461837732259745,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_50,distribucion,alerta,en_pico,historica,0.5132153062292546,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_50,calidad,alerta,lag_24,historica,0.5,0.0,0.5,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_50,calidad,alerta,lag_168,historica,0.5,0.0,0.5,"Investigar disponibilidad del feature store, corregir captura/rezagos y recuperar mediciones. La imputacion no resuelve la causa."
+combinado_50,distribucion,alerta,hora,control,0.5132923909306615,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.
+combinado_50,distribucion,alerta,en_pico,control,0.5132153062292546,,,Verificar calendario y composicion; monitorizar segmentos. No inferir perdida de desempeno solo por PSI.

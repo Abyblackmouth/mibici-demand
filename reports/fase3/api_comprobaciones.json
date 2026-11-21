@@ -1,0 +1,22 @@
+{
+  "estado": "comprobado",
+  "pytest": {
+    "tests": "97",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "42.285"
+  },
+  "solicitud_http_real": "http://127.0.0.1:52082/predict",
+  "http_status": 200,
+  "max_abs_diff_api_directa": 0.0,
+  "archivos_previos_verificados": 55,
+  "backtesting_auditoria_y_modelos_conservan_hash": true,
+  "modelo_historico_sha256": "0faf37a57e05346ebfd59e695320a1e33eb5cecea98f1aec46858992319ff6b2",
+  "codigo_sha256": {
+    "mibici_demand/api.py": "7f8733042b904db6fc55011724a2d519489e2948d1f2794fa5087331ef0e975e",
+    "tests/test_api.py": "078942c1d922b716e74a43e63aa4bd9e6d34b54c7a293841449cd02e3249a3a4",
+    "scripts/verify_api.py": "a47097360834d0ce74050b944d90a36cabbb0a0cc80e9fe530e2fe0460fd830b",
+    "requirements.txt": "dfe74aaa9301c777a4e431a729e5734c7db49b545d6efda4b22f0004d331b993"
+  }
+}

@@ -1,3 +1,9 @@
+# Integración actual de Fase 3
+
+Instalación reproducible, API, Docker, monitoreo y limitaciones: [README](../../README.md).
+Auditoría y rúbrica: [auditoría final](../../reports/fase3/auditoria_integracion_final.md).
+Las descripciones siguientes documentan el alcance histórico de las Fases 1/2.
+
 # MiBici Demand
 
 ## Descripción

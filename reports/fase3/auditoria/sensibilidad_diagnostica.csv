@@ -1,0 +1,4 @@
+escenario_diagnostico,lag_168,prediccion
+original,50.0,438.011742808447
+mediana_train,1.0,25.757776224862937
+p99_train,10.0,90.92499575267442

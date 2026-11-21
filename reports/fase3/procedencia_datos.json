@@ -1,0 +1,31 @@
+{
+  "fuente": "https://mibici.net/en/open-data/",
+  "zona_horaria": "America/Mexico_City",
+  "descargado_o_verificado_en": "2026-11-19T19:52:28.903941-06:00",
+  "inicio_inclusivo": "2026-08-02 00:00:00",
+  "fin_exclusivo": "2026-09-28 00:00:00",
+  "meses": [
+    "2026-08",
+    "2026-09"
+  ],
+  "archivos": [
+    {
+      "archivo": "datos_abiertos_2026_08.csv",
+      "url": "https://mibici.net/site/assets/files/130362/datos_abiertos_2026_08.csv",
+      "bytes": 34158210,
+      "sha256": "e34f39b9ad204ae0b66f3538894a5f86ed03f46d98701169d3e4d95952d5f671",
+      "sha256_coincide_fase1": true
+    },
+    {
+      "archivo": "datos_abiertos_2026_09.csv",
+      "url": "https://mibici.net/site/assets/files/131825/datos_abiertos_2026_09.csv",
+      "bytes": 42566896,
+      "sha256": "00b5cf64cc31a502d01044d905f6e033f9bc1db962e771119742fd25c6cb58b3",
+      "sha256_coincide_fase1": true
+    }
+  ],
+  "viajes_utilizados": 778487,
+  "viajes_limpios_sha256": "653f66b4098dcaf6e181cb9b7db8a82cb27d0bcc37a43e6f879de5a2b7774834",
+  "acceso": "CSV mensuales; simulación offline de disponibilidad de viajes terminados",
+  "catalogo_estaciones_utilizado": false
+}
